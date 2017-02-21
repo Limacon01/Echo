@@ -1,19 +1,14 @@
 import java.awt.Color;
 import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class Echo extends JFrame {
 
-    private static String status = "OFF";
-    private static String mode = "LISTEN"; // LISTEN (cyan) or ANSWER (blue)
+    private static String status = "OFF"; // LISTEN (cyan) or ANSWER (blue)
 
-    final PowerButton power = new PowerButton();
-    final Light light = new Light(mode);
-
+    final PowerButton   power = new PowerButton();
+    final Light         light = new Light(status);
 
 
     private class PowerButton extends JToggleButton {
@@ -22,25 +17,17 @@ public class Echo extends JFrame {
             setSelectedIcon(new ImageIcon("powerON.png"));
             setBorder(null);
             setContentAreaFilled(false);
-            if (isSelected()) {
-                status = "ON";
-                updateUI();
-            }else status = "OFF";
-            validate();
-            repaint();
-        }
+                    }
+
     }
 
     private class Light extends JButton {
         Light(String mode) {
-            if (power.isSelected()){
-                        setIcon(new ImageIcon("light" + mode + ".png"));
-                    }else{
-                        setIcon(new ImageIcon("light" + status + ".png"));;
+            setIcon(new ImageIcon("light" + status + ".png"));
             setBorder(null);
             setContentAreaFilled(false);
         }
-    }}
+    }
 
     public Echo() {
         setTitle("Echo");
@@ -49,14 +36,25 @@ public class Echo extends JFrame {
 
 
         power.setBounds(147, 623, 47, 50); add(power);
-        light.setBounds(44, 50, 257, 100);  add(light);
+        light.setBounds(44, 50, 257, 100); add(light);
 
+        power.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ev) {
+                switch (status) {
+                    case "OFF":
+                        status = "LISTEN";  break;
+                    case "LISTEN":
+                        status = "OFF";     break;
+                }
+                light.setIcon(new ImageIcon("light" + status + ".png"));
+            }
+        });
     }
 
     public static void main(String[] argv) {
         JFrame frame = new Echo();
         frame.setLocationRelativeTo(null);
-        frame.setSize(350, 900); /* title bar! */
+        frame.setSize(350, 900);
         frame.setResizable(false);
         frame.setVisible(true);
     }
