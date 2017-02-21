@@ -48,15 +48,15 @@ public class Echo extends JFrame {
         setLayout(null);
 
 
-        power.setBounds(117, 573, 47, 50); add(power);
-        light.setBounds(12, 0, 257, 100);  add(light);
+        power.setBounds(147, 623, 47, 50); add(power);
+        light.setBounds(44, 50, 257, 100);  add(light);
 
     }
 
     public static void main(String[] argv) {
         JFrame frame = new Echo();
         frame.setLocationRelativeTo(null);
-        frame.setSize(287, 780); /* title bar! */
+        frame.setSize(350, 900); /* title bar! */
         frame.setResizable(false);
         frame.setVisible(true);
     }
