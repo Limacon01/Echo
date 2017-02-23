@@ -50,7 +50,7 @@ public class Echo extends JFrame {
         setLayout(null);
 
         power.setBounds(147, 623, 47, 50); add(power);
-        light.setBounds(44, 50, 257, 100); add(light);
+        light.setBounds(46, 57, 257, 100); add(light); //Currently works on resolution @ Blue Room
 
         /*
         *   Illuminate transitions from:
