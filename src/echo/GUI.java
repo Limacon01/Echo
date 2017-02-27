@@ -1,3 +1,4 @@
+package echo;
 /*
 * What does this do?
 *   Initiates GUI for an Echo in Off mode
@@ -15,21 +16,20 @@
 *   Implement testing
 */
 
-import java.awt.event.*;
 import javax.swing.*;
 
-public class Echo extends JFrame {
+public class GUI extends JFrame {
 
     private static String status = "OFF"; //Global variable each operating mode
-
+    private static String resdir = "./src/echo/Resources/Images/";
     final PowerButton   power = new PowerButton();
     final Light         light = new Light(status);
 
     /* On/Off button */
     private class PowerButton extends JToggleButton {
         PowerButton() {
-            setIcon(new ImageIcon("powerOFF.png"));
-            setSelectedIcon(new ImageIcon("powerON.png"));
+            setIcon(new ImageIcon(resdir + "powerOFF.png"));
+            setSelectedIcon(new ImageIcon(resdir + "powerON.png"));
             setBorder(null);
             setContentAreaFilled(false);
         }
@@ -38,15 +38,15 @@ public class Echo extends JFrame {
     /* Lights */
     private class Light extends JButton {
         Light(String mode) {
-            setIcon(new ImageIcon("light" + status + ".png"));
+            setIcon(new ImageIcon(resdir + "light" + status + ".png"));
             setBorder(null);
             setContentAreaFilled(false);
         }
     }
 
-    public Echo() {
+    public GUI() {
         setTitle("Echo");
-        setContentPane(new JLabel(new ImageIcon("background.png")));
+        setContentPane(new JLabel(new ImageIcon(resdir + "background.png")));
         setLayout(null);
 
         power.setBounds(147, 623, 47, 50); add(power);
@@ -57,24 +57,20 @@ public class Echo extends JFrame {
         *       OFF -> Listening mode
         *       Listening mode -> OFF
         */
-        power.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
-                switch (status) {
-                    case "OFF":
-                        status = "LISTEN";  break;
-                    case "LISTEN":
-                        status = "OFF";     break;
-                }
-                light.setIcon(new ImageIcon("light" + status + ".png"));
+        power.addActionListener(ev -> {
+            switch (status) {
+                case "OFF":
+                    status = "LISTEN";  break;
+                case "LISTEN":
+                    status = "OFF";     break;
             }
+            light.setIcon(new ImageIcon(resdir + "light" + status + ".png"));
         });
-    }
 
-    public static void main(String[] argv) {
-        JFrame frame = new Echo();
-        frame.setSize(350, 900);
-        frame.setLocationRelativeTo(null);
-        frame.setResizable(false);
-        frame.setVisible(true);
+        /* Configures the screen */
+        this.setSize(350, 900);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setVisible(true);
     }
 }
