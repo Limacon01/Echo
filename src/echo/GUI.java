@@ -22,8 +22,9 @@ public class GUI extends JFrame {
 
     private static String status = "OFF"; //Global variable each operating mode
     private static String resdir = "./src/echo/Resources/Images/";
-    final PowerButton   power = new PowerButton();
-    final Light         light = new Light(status);
+    private final PowerButton   power = new PowerButton();
+    private final Light         light = new Light(status);
+    private Sounds sound;
 
     /* On/Off button */
     private class PowerButton extends JToggleButton {
@@ -59,10 +60,18 @@ public class GUI extends JFrame {
         */
         power.addActionListener(ev -> {
             switch (status) {
+                /* Turning echo from off to on */
                 case "OFF":
-                    status = "LISTEN";  break;
+                    status = "LISTEN";
+                    sound = new Sounds("ON");
+                    sound.run();
+                    break;
+                /* Turning echo from on to off */
                 case "LISTEN":
-                    status = "OFF";     break;
+                    status = "OFF";
+                    sound = new Sounds("OFF");
+                    sound.run();
+                    break;
             }
             light.setIcon(new ImageIcon(resdir + "light" + status + ".png"));
         });
