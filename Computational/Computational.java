@@ -9,55 +9,63 @@ import org.json.JSONArray;
 
 
 /*
- * Access the Wolfram Alpha computational knowledge engine. 
- * 
- * See http://products.wolframalpha.com/api/documentation.html
- *
- * David Wakeling, 2017.
- */
+* Access the Wolfram Alpha computational knowledge engine.
+*/
 public class Computational {
-  final static String PROBLEM = "What was the last species of animal to go extinct?";
-  final static String APPID   = "J2LY8L-4EYJWU38EA";
 
-  /*
-   * Solve.
-   */
-  private static String solve( String input ) { 
-    final String method = "POST";
-    final String url    
-      = ( "http://api.wolframalpha.com/v2/query"
-        + "?" + "appid"  + "=" + APPID
-        + "&" + "input"  + "=" + urlEncode( input )
-        + "&" + "output" + "=" + "JSON"
-        );
-    final String[][] headers
-      = { { "Content-Length", "0" }
-        };
-    final byte[] body = new byte[0];
-    byte[] response   = HttpConnect.httpConnect( method, url, headers, body );
-    String xml        = new String( response );
-    return xml;
-  } 
+    final static String PROBLEM = "how tall is big ben in millimetres";
+    final static String APPID   = "J2LY8L-4EYJWU38EA";
 
-  /*
-   * URL encode string.
-   */ 
-  private static String urlEncode( String s ) {
-    try {
-      return URLEncoder.encode( s, "utf-8" );
-    } catch ( Exception ex ) {
-      System.out.println( ex ); System.exit( 1 ); return null;
+    /*
+    * Solve.
+    */
+    private static String solve( String input ) {
+        final String method = "POST";
+        final String url
+          = ( "http://api.wolframalpha.com/v2/query"
+            + "?" + "appid"  + "=" + APPID
+            + "&" + "input"  + "=" + urlEncode( input )
+            + "&" + "output" + "=" + "JSON"
+            );
+        final String[][] headers
+          = { { "Content-Length", "0" }
+            };
+        final byte[] body = new byte[0];
+        byte[] response   = HttpConnect.httpConnect( method, url, headers, body );
+        String xml        = new String( response );
+        return xml;
     }
-  }
 
-  /*
-   * Solve problem giving solution.
-   */
-  public static void main( String[] argv ) {
-      String solution = solve(PROBLEM);
-      String preresult = "";
+    /*
+    * URL encode string.
+    */
+    private static String urlEncode( String s ) {
+        try {
+          return URLEncoder.encode( s, "utf-8" );
+        } catch ( Exception ex ) {
+          System.out.println( ex ); System.exit( 1 ); return null;
+        }
+    }
 
-      try {
+    /*
+    * Solve problem giving solution.
+    */
+    public static void main( String[] argv ) {
+        Computational comp = new Computational();
+        String solution = comp.solve(PROBLEM);
+        String processedSolution = comp.processJson(solution);
+        System.out.println(processedSolution);
+
+
+
+
+
+        //for (int i=0; i < solution.length(); i++) {
+
+        //}
+        /*
+        String preresult = "";
+        try {
           JSONObject jo = new JSONObject(solution);
 
           JSONObject qr = ((JSONObject) jo.get("queryresult"));
@@ -71,22 +79,67 @@ public class Computational {
               preresult = (String) subsubpod.get("plaintext");
 
           } else {
-              System.out.println("I didn't understand the question, moron");
+              System.out.println("I didn't understand the question");
           }
 
-      }catch (Exception e) {
+        }catch (Exception e) {
           System.out.println("JSON processing failed : " + e);
-      }
-      if (preresult.startsWith("1 | noun | ")) {
+        }
+        if (preresult.startsWith("1 | noun | ")) {
           preresult = preresult.substring(11, preresult.indexOf("2 | noun |"));
-      } else if (preresult.startsWith("noun | ")) {
+        } else if (preresult.startsWith("noun | ")) {
           preresult = preresult.substring(7);
-      }
+        }
 
-      //JSONArray fin = (JSONArray)subpod.get("plaintext");
-      //System.out.println(fin);
+        //JSONArray fin = (JSONArray)subpod.get("plaintext");
+        //System.out.println(fin);
 
-      System.out.println(preresult);
-      //System.out.println( solution );
-  }
+        System.out.println(preresult);
+        */
+        //System.out.println( solution );
+        }
+
+    public String processJson(String s) {
+        if (!s.substring(20,36).equals("\"success\" : true")) {
+            return "Query unsuccessful";
+        }
+        if (!s.contains("\"title\" : \"Result\"")) {
+            return "No results found";
+        }
+
+        int resultPodIndex = s.indexOf("\"title\" : \"Result\"");
+        if (!s.substring(resultPodIndex).contains("\"plaintext\" : ")) {
+            return "No results found";
+        }
+        String resultPod = s.substring(resultPodIndex);
+        String resultString = resultPod.substring(resultPod.indexOf("\"plaintext\" : ") + 15);
+
+        int endResultString = resultString.indexOf("\"");
+        String finalResult = resultString.substring(0, endResultString);
+
+
+        return finalResult;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
