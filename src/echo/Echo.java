@@ -1,5 +1,7 @@
 package echo;
 
+import echo.Computational.Detective;
+
 import javax.swing.*;
 
 public class Echo{
@@ -7,10 +9,14 @@ public class Echo{
 
     Echo(){
         JFrame gui = new GUI();
-        gui.setSize(350, 900);
-        gui.setLocationRelativeTo(null);
-        gui.setResizable(false);
-        gui.setVisible(true);
+        // Detective creates an *insert helpfully named event* once a sound is detected
+        Detective d = new Detective();
+        d.run();
+
+        /*
+
+         */
+        //Computational c = new Computational();
     }
 
 }

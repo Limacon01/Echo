@@ -23,7 +23,7 @@ public class GUI extends JFrame {
     private static String status = "OFF"; //Global variable each operating mode
     private static String resdir = "./src/echo/Resources/Images/";
     private final PowerButton   power = new PowerButton();
-    private final Light         light = new Light(status);
+    private final Light         light = new Light();
     private Sounds sound;
 
     /* On/Off button */
@@ -38,7 +38,7 @@ public class GUI extends JFrame {
 
     /* Lights */
     private class Light extends JButton {
-        Light(String mode) {
+        Light() {
             setIcon(new ImageIcon(resdir + "light" + status + ".png"));
             setBorder(null);
             setContentAreaFilled(false);
@@ -63,6 +63,7 @@ public class GUI extends JFrame {
                 /* Turning echo from off to on */
                 case "OFF":
                     status = "LISTEN";
+                    //Starts detective until keyword is spoken
                     sound = new Sounds("ON");
                     sound.run();
                     break;
