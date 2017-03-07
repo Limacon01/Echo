@@ -12,6 +12,7 @@ import java.io.File;
 class Sounds implements Runnable{
     private static String resDir = "./src/echo/Resources/Sounds/";
     private File desiredFile;
+    private boolean playing;
 
     Sounds(String status){
         switch (status) {
@@ -34,7 +35,9 @@ class Sounds implements Runnable{
             AudioInputStream as = AudioSystem.getAudioInputStream(desiredFile);
             clip.open(as);
             clip.start();
-            Thread.sleep(clip.getMicrosecondLength() / 1000);
+            while(playing) {
+                Thread.sleep(clip.getMicrosecondLength() / 1000);
+            }
         }catch(Exception e){
             e.printStackTrace();
         }
