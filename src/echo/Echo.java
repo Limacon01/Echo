@@ -9,14 +9,18 @@ public class Echo{
 
     Echo(){
         JFrame gui = new GUI();
+
         // Detective creates an *insert helpfully named event* once a sound is detected
         Detective d = new Detective();
         d.run();
 
-        /*
+        //Record sound for 5s
 
-         */
-        //Computational c = new Computational();
+        //Process sound (speech to text)
+
+        //Send to wolfram
+
+        //Text to speech
     }
 
 }

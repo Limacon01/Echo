@@ -10,10 +10,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 
 public class Detective implements Runnable {
-    private static final float SAMPLE_RATE = 44100f;  /* MHz  */
-    private static final int SAMPLE_SIZE = 16;    /* bits */
-    private static final int SAMPLE_CHANNELS = 1;     /* mono */
-    private static final int SAMPLE_THRESHOLD = 1000;
+    private static final float  SAMPLE_RATE = 44100f;  /* MHz  */
+    private static final int    SAMPLE_SIZE = 16;    /* bits */
+    private static final int    SAMPLE_CHANNELS = 1;     /* mono */
+    private static final int    SAMPLE_THRESHOLD = 1000;
 
     public Detective() {
 
