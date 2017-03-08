@@ -19,7 +19,6 @@ package echo;
 import javax.swing.*;
 
 public class GUI extends JFrame {
-
     private static String status = "OFF"; //Global variable each operating mode
     private static String resdir = "./src/echo/Resources/Images/";
     private final PowerButton   power = new PowerButton();
