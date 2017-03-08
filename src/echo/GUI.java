@@ -16,14 +16,29 @@ package echo;
 *   Implement testing
 */
 
+import echo.Computational.StartListeningListener;
+
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GUI extends JFrame {
+    private static final int startupCoolDown = 0;
+    private static final int shutdownCoolDown = 0;
+    private boolean isDisabled = false;
+
     private static String status = "OFF"; //Global variable each operating mode
     private static String resdir = "./src/echo/Resources/Images/";
     private final PowerButton   power = new PowerButton();
     private final Light         light = new Light();
     private Sounds sound;
+
+    private List<StartListeningListener> startListeningListeners = new ArrayList<>();
+
+    public void addListener(StartListeningListener sdl) {
+        System.out.println("adding detection listener");
+        startListeningListeners.add(sdl);
+    }
 
     /* On/Off button */
     private class PowerButton extends JToggleButton {
@@ -58,22 +73,50 @@ public class GUI extends JFrame {
         *       Listening mode -> OFF
         */
         power.addActionListener(ev -> {
-            switch (status) {
+            if (!isDisabled) {
+                isDisabled = true;
+                switch (status) {
                 /* Turning echo from off to on */
-                case "OFF":
-                    status = "LISTEN";
-                    //Starts detective until keyword is spoken
-                    sound = new Sounds("ON");
-                    sound.run();
-                    break;
+                    case "OFF":
+                        status = "LISTEN";
+                        light.setIcon(new ImageIcon(resdir + "light" + status + ".png"));
+
+                        sound = new Sounds("ON");
+                        sound.run();
+
+                        //Do echo stuff
+                        for (StartListeningListener sll: startListeningListeners) {
+                            sll.startListening();
+                        }
+
+                        try {
+                            Thread.sleep(startupCoolDown);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+
                 /* Turning echo from on to off */
-                case "LISTEN":
-                    status = "OFF";
-                    sound = new Sounds("OFF");
-                    sound.run();
-                    break;
+                    case "LISTEN":
+                        status = "OFF";
+                        light.setIcon(new ImageIcon(resdir + "light" + status + ".png"));
+
+                        sound = new Sounds("OFF");
+                        sound.run();
+
+                        //Do echo stuff
+
+                        try {
+                            Thread.sleep(startupCoolDown);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                }
+                //Finished turning on or off
+                System.out.println("Status after clicking:" + status);
+                isDisabled = false;
             }
-            light.setIcon(new ImageIcon(resdir + "light" + status + ".png"));
         });
 
         /* Configures the screen */

@@ -17,10 +17,10 @@ class Sounds implements Runnable{
     Sounds(String status){
         switch (status) {
             case "ON":
-                desiredFile = new File( resDir + "starwars.wav");
+                desiredFile = new File( resDir + "onSound.wav");
                 break;
             case "OFF":
-                desiredFile = new File( resDir + "westlife.wav");
+                desiredFile = new File( resDir + "offSound.wav");
                 break;
             default:
                 desiredFile = new File( resDir + "errorMessage. wav");
@@ -35,9 +35,8 @@ class Sounds implements Runnable{
             AudioInputStream as = AudioSystem.getAudioInputStream(desiredFile);
             clip.open(as);
             clip.start();
-            while(playing) {
-                Thread.sleep(clip.getMicrosecondLength() / 1000);
-            }
+            //clip.close();
+
         }catch(Exception e){
             e.printStackTrace();
         }
