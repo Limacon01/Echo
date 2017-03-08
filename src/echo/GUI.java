@@ -64,11 +64,11 @@ public class GUI extends JFrame {
         setContentPane(new JLabel(new ImageIcon(resdir + "background.png")));
         setLayout(null);
 
-        power.setBounds(900, 705,  115,   105);     add(power);
-        light.setBounds(  0,   0, 1920,  1080);     add(light);
+        power.setBounds(150, 615,  115,   105);     add(power);
+        light.setBounds(  0,   0, 420,  900);       add(light);
 
         /* Configures the screen */
-        this.setSize(1600, 900);
+        this.setSize(420, 900);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
