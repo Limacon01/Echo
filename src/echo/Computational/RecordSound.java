@@ -24,19 +24,19 @@ public class RecordSound {
    */
    public static AudioInputStream setupStream() {
     try {
-      AudioFormat af =
-        new AudioFormat( SAMPLE_RATE
-                       , SAMPLE_SIZE
-                       , SAMPLE_CHANNELS
-                       , true /* signed */
-                       , true /* little-endian */
-                       );
-      DataLine.Info    info = new DataLine.Info( TargetDataLine.class, af );
-      TargetDataLine   line = (TargetDataLine) AudioSystem.getLine( info );
-      AudioInputStream stm  = new AudioInputStream( line );
-      line.open( af );
-      line.start();
-      return stm;
+        AudioFormat af =
+                new AudioFormat( SAMPLE_RATE
+                           , SAMPLE_SIZE
+                           , SAMPLE_CHANNELS
+                           , true /* signed */
+                           , true /* little-endian */
+                );
+        DataLine.Info    info = new DataLine.Info( TargetDataLine.class, af );
+        TargetDataLine   line = (TargetDataLine) AudioSystem.getLine( info );
+        AudioInputStream stm  = new AudioInputStream( line );
+        line.open( af );
+        line.start();
+        return stm;
     } catch ( Exception ex ) {
         System.out.println( ex );
         ex.printStackTrace();
@@ -45,6 +45,7 @@ public class RecordSound {
         return null;
     }
   }
+
 
   /*
    * Read stream.

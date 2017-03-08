@@ -72,6 +72,7 @@ public class Detective implements Runnable {
                         for (SoundDetectedListener sdl : soundDetectedListeners) {
                             dataLine.close();
                             sdl.soundDetected();
+                            System.out.println("Sound detected");
                             return;
                         }
                     }

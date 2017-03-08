@@ -2,6 +2,7 @@ package echo;
 import echo.Computational.*;
 import echo.*;
 
+import javax.sound.sampled.AudioInputStream;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,16 +29,15 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
 
     @Override
     public void soundDetected() {
-//        /
-//        //Record sound for 5s
-//        System.out.println("Sound detected");
-//        AudioInputStream ais = RecordSound.setupStream();
-//        RecordSound.recordSound(FILENAME, RecordSound.readStream(ais));
-//
-//        /*
-//         * Convert speech to text.
-//        */
-//        processSpeechToText();
+        //Record sound for 5s
+        System.out.println("Sound detected");
+        AudioInputStream ais = RecordSound.setupStream();
+        RecordSound.recordSound(FILENAME, RecordSound.readStream(ais));
+
+        /*
+         * Convert speech to text.
+        */
+        processSpeechToText();
     }
 
     String processSpeechToText(){
@@ -54,7 +54,6 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
     @Override
     public void startListening() {
         // Detective creates an *insert helpfully named event* once a sound is detected
-        System.out.println("in the start listening method");
         detective.run();
     }
 }
