@@ -8,7 +8,9 @@ import java.lang.reflect.*;
 import static org.junit.Assert.*;
 
 /**
- * Created by James on 08/03/2017.
+ * @author James
+ * @version 1.0
+ * Testing methods for WolframQuery Class
  */
 public class WolframQueryTest {
     private final static String sampleQuestion1 = "What is the melting point of copper?";
