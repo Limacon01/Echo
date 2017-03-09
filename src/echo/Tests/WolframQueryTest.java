@@ -1,6 +1,7 @@
-package echo.Computational;
+package echo.Tests;
 
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import echo.Computational.WolframQuery;
 import org.junit.Test;
 
 import java.lang.reflect.*;
@@ -26,7 +27,7 @@ public class WolframQueryTest {
      */
     @Test
     public void testSolve() {
-        WolframQuery wq = new WolframQuery();
+        echo.Computational.WolframQuery wq = new WolframQuery();
         Class c = wq.getClass();
 
         // Expected response:
