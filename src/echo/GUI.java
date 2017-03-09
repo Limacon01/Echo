@@ -89,13 +89,15 @@ public class GUI extends JFrame {
         power.addActionListener(ev -> {
             if (!isDisabled) {
                 isDisabled = true;
+
+                System.out.println("Trying to set to listen");
+
                 switch (status) {
                 /* Turning echo from off to on */
                     case "OFF":
                         status = "LISTEN";
                         URL lightListenRes = this.getClass().getResource("/echo/Resources/Images/lightLISTEN.png");
                         light.setIcon(new ImageIcon(lightListenRes));
-                        System.out.println("Tried to set icon");
 
                         sound = new Sounds("ON");
                         sound.run();
@@ -104,6 +106,7 @@ public class GUI extends JFrame {
                         for (StartListeningListener sll: startListeningListeners) {
                             sll.startListening();
                         }
+
 
                         try {
                             Thread.sleep(startupCoolDown);
