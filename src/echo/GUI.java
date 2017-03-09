@@ -1,28 +1,20 @@
 package echo;
-/*
-* What does this do?
-*   Initiates GUI for an Echo in Off mode
-*   Toggle button for power
-*   When power button is turned on, lights will glow Cyan to show listening mode has been entere
-*/
-
-/*
-* To do:
-*   Get JFrame functioning properly on multiple resolutions
-*   Add light mode for answer state
-*   Integrate listeners for microphone use for answer mode
-*   Make 3D model of Amazon Echo for nicer viewing
-*   Make GIFs for lights
-*   Implement testing
-*/
 
 import echo.Computational.StartListeningListener;
-
 import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Initiates GUI for an Echo in Off mode
+ * Toggle button for power
+ * When power button is turned on, lights will glow Cyan to show listening mode has been entered
+ * (not fully functional at the moment)
+ * TODO:  add light mode for answer state
+ * TODO:  integrate listeners for microphone use for answer mode
+ * TODO:  make GIFs for lights
+ */
 public class GUI extends JFrame {
     private static final int startupCoolDown = 0;
     private static final int shutdownCoolDown = 0;
@@ -41,7 +33,10 @@ public class GUI extends JFrame {
         startListeningListeners.add(sdl);
     }
 
-    /* On/Off button */
+    /**
+     * Two-state button with a different icon for each state
+     * State change triggered by a mouse click upon button
+     */
     private class PowerButton extends JToggleButton {
         PowerButton() {
             URL powerOFFLoc = this.getClass().getResource("/echo/Resources/Images/powerOFF.png");
@@ -54,7 +49,9 @@ public class GUI extends JFrame {
         }
     }
 
-    /* Lights */
+    /**
+     * Single state button to act solely as a graphic
+     */
     private class Light extends JButton {
         Light() {
             URL light = this.getClass().getResource("/echo/Resources/Images/" + "light" + status + ".png");
