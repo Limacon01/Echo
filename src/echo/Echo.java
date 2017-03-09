@@ -1,10 +1,12 @@
 package echo;
-import echo.Computational.*;
 
+import echo.Computational.*;
 import javax.sound.sampled.AudioInputStream;
 
+/**
+ * Main controller for the Echo device
+ */
 public class Echo implements SoundDetectedListener, StartListeningListener {
-    //Setup gui -- where sound is integrated.
     private static final String  FILENAME   = "query.wav";
     private static final String  INPUT      = "./query.wav";
     private static final String  KEY1       = "1ac04cd4347b49a2b89052edf1a45ef0";
@@ -18,10 +20,23 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
 
         detective = new Detective();
         detective.addListener(this);
-        //Send to wolfram
-        //Text to speech
+        //TODO: Text to speech
     }
 
+    /**
+     * Once a device is ready to start listening
+     * This starts detective, which listens for a sound
+     * over a specific threshold
+     */
+    @Override
+    public void startListening() {
+        detective.run();
+    }
+
+    /**
+     * Once a sound is detected, record sound for 5s
+     * and process it
+     */
     @Override
     public void soundDetected() {
         //Record sound for 5s
@@ -29,9 +44,6 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
         AudioInputStream ais = RecordSound.setupStream();
         RecordSound.recordSound(FILENAME, RecordSound.readStream(ais));
         RecordSound.closeDataLine();
-        /*
-         * Convert speech to text.
-        */
         processSpeechToText();
     }
 
@@ -43,12 +55,5 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
         //This is JSON text recieved back from microsoft
         System.out.println(jsonText);
         return jsonText;
-    }
-
-    // This event is created by the GUI when the ON switch is clicked in ON/OFF mode
-    @Override
-    public void startListening() {
-        // Detective creates an *insert helpfully named event* once a sound is detected
-        detective.run();
     }
 }
