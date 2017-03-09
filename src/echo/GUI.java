@@ -19,6 +19,7 @@ package echo;
 import echo.Computational.StartListeningListener;
 
 import javax.swing.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class GUI extends JFrame {
     private boolean isDisabled = false;
 
     private static String status = "OFF"; //Global variable each operating mode
-    private static String resdir = "./src/echo/Resources/Images/";
+    private static final String RESDIR = "./src/echo/Resources/Images/";
     private final PowerButton   power = new PowerButton();
     private final Light         light = new Light();
     private Sounds sound;
@@ -43,8 +44,11 @@ public class GUI extends JFrame {
     /* On/Off button */
     private class PowerButton extends JToggleButton {
         PowerButton() {
-            setIcon(new ImageIcon(resdir + "powerOFF.png"));
-            setSelectedIcon(new ImageIcon(resdir + "powerON.png"));
+            URL powerOFFLoc = this.getClass().getResource("/echo/Resources/Images/powerOFF.png");
+            URL powerONLoc = this.getClass().getResource("/echo/Resources/Images/powerON.png");
+
+            setIcon(new ImageIcon(powerOFFLoc));
+            setSelectedIcon(new ImageIcon(powerONLoc));
             setBorder(null);
             setContentAreaFilled(false);
         }
@@ -53,7 +57,8 @@ public class GUI extends JFrame {
     /* Lights */
     private class Light extends JButton {
         Light() {
-            setIcon(new ImageIcon(resdir + "light" + status + ".png"));
+            URL light = this.getClass().getResource("/echo/Resources/Images/" + "light" + status + ".png");
+            setIcon(new ImageIcon(light));
             setBorder(null);
             setContentAreaFilled(false);
         }
@@ -61,7 +66,8 @@ public class GUI extends JFrame {
 
     public GUI() {
         setTitle("Echo");
-        setContentPane(new JLabel(new ImageIcon(resdir + "background.png")));
+        URL background = this.getClass().getResource("/echo/Resources/Images/background.png");
+        setContentPane(new JLabel(new ImageIcon(background)));
         setLayout(null);
 
         power.setBounds(150, 615,  115,   105);     add(power);
@@ -88,7 +94,8 @@ public class GUI extends JFrame {
                 /* Turning echo from off to on */
                     case "OFF":
                         status = "LISTEN";
-                        light.setIcon(new ImageIcon(resdir + "light" + status + ".png"));
+                        URL lightDir1 = this.getClass().getResource("/echo/Resources/Images/" + "light" + status + ".png");
+                        light.setIcon(new ImageIcon(lightDir1));
 
                         sound = new Sounds("ON");
                         sound.run();
@@ -108,15 +115,14 @@ public class GUI extends JFrame {
                 /* Turning echo from on to off */
                     case "LISTEN":
                         status = "OFF";
-                        light.setIcon(new ImageIcon(resdir + "light" + status + ".png"));
+                        URL lightDir2 = this.getClass().getResource("/echo/Resources/Images/" + "light" + status + ".png");
+                        light.setIcon(new ImageIcon(lightDir2));
 
                         sound = new Sounds("OFF");
                         sound.run();
 
-                        //Do echo stuff
-
                         try {
-                            Thread.sleep(startupCoolDown);
+                            Thread.sleep(shutdownCoolDown);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
