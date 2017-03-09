@@ -29,9 +29,9 @@ public class GUI extends JFrame {
     private boolean isDisabled = false;
 
     private static String status = "OFF"; //Global variable each operating mode
-    private static final String RESDIR = "./src/echo/Resources/Images/";
     private final PowerButton   power = new PowerButton();
     private final Light         light = new Light();
+
     private Sounds sound;
 
     private List<StartListeningListener> startListeningListeners = new ArrayList<>();
@@ -81,7 +81,6 @@ public class GUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
 
-
         /*
         *   Illuminate transitions from:
         *       OFF -> Listening mode
@@ -90,12 +89,15 @@ public class GUI extends JFrame {
         power.addActionListener(ev -> {
             if (!isDisabled) {
                 isDisabled = true;
+
+                System.out.println("Trying to set to listen");
+
                 switch (status) {
                 /* Turning echo from off to on */
                     case "OFF":
                         status = "LISTEN";
-                        URL lightDir1 = this.getClass().getResource("/echo/Resources/Images/" + "light" + status + ".png");
-                        light.setIcon(new ImageIcon(lightDir1));
+                        URL lightListenRes = this.getClass().getResource("/echo/Resources/Images/lightLISTEN.png");
+                        light.setIcon(new ImageIcon(lightListenRes));
 
                         sound = new Sounds("ON");
                         sound.run();
@@ -104,6 +106,7 @@ public class GUI extends JFrame {
                         for (StartListeningListener sll: startListeningListeners) {
                             sll.startListening();
                         }
+
 
                         try {
                             Thread.sleep(startupCoolDown);
@@ -115,8 +118,8 @@ public class GUI extends JFrame {
                 /* Turning echo from on to off */
                     case "LISTEN":
                         status = "OFF";
-                        URL lightDir2 = this.getClass().getResource("/echo/Resources/Images/" + "light" + status + ".png");
-                        light.setIcon(new ImageIcon(lightDir2));
+                        URL lightOFFRes = this.getClass().getResource("/echo/Resources/Images/lightOFF.png");
+                        light.setIcon(new ImageIcon(lightOFFRes));
 
                         sound = new Sounds("OFF");
                         sound.run();

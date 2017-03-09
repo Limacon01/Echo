@@ -1,11 +1,7 @@
 package echo;
 import echo.Computational.*;
-import echo.*;
 
 import javax.sound.sampled.AudioInputStream;
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Echo implements SoundDetectedListener, StartListeningListener {
     //Setup gui -- where sound is integrated.
@@ -22,7 +18,6 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
 
         detective = new Detective();
         detective.addListener(this);
-
         //Send to wolfram
         //Text to speech
     }
@@ -33,7 +28,7 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
         System.out.println("Sound detected");
         AudioInputStream ais = RecordSound.setupStream();
         RecordSound.recordSound(FILENAME, RecordSound.readStream(ais));
-
+        RecordSound.closeDataLine();
         /*
          * Convert speech to text.
         */
