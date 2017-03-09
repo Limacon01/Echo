@@ -64,8 +64,17 @@ public class GUI extends JFrame {
         setContentPane(new JLabel(new ImageIcon(resdir + "background.png")));
         setLayout(null);
 
-        power.setBounds(147, 623, 47, 50); add(power);
-        light.setBounds(44, 50, 257, 100); add(light);
+        power.setBounds(150, 615,  115,   105);     add(power);
+        light.setBounds(  0,   0, 420,  900);       add(light);
+
+        /* Configures the screen */
+        this.setSize(420, 900);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.pack();
+
 
         /*
         *   Illuminate transitions from:
@@ -118,11 +127,5 @@ public class GUI extends JFrame {
                 isDisabled = false;
             }
         });
-
-        /* Configures the screen */
-        this.setSize(350, 900);
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
-        this.setVisible(true);
     }
 }
