@@ -1,7 +1,8 @@
 package echo.Computational;
 
 /**
- * Created by Mark on 08/03/2017.
+ * @version 1.0
+ * Listener that is informed when the Echo device is ready to listen
  */
 public interface StartListeningListener {
     void startListening();

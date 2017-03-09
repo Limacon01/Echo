@@ -34,7 +34,7 @@ class WolframQuery {
 
     /**
      * Encode String to utf-8
-     * @param   s     Input testing
+     * @param   s       Input testing
      * @return
      */
     private static String urlEncode( String s ) {
@@ -46,8 +46,10 @@ class WolframQuery {
     }
 
     /**
-     * @param s is the string to process
-     * @return the processed string
+     * Search for a plaintext answer within a JSON formatted answer
+     * @param   s       Unprocessed JSON string
+     * @return          Either the query result or a message describing an unsuccessful query
+     *                  in plaintext format
      */
     private String processJson(String s) {
         if (!s.substring(20,36).equals("\"success\" : true")) {
