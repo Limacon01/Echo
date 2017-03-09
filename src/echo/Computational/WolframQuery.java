@@ -7,7 +7,7 @@ import echo.Networking.*;
  * @version 1.4
  * Methods for accessing the Wolfram Alpha Computational Knowledge Engine
  */
-class WolframQuery {
+public class WolframQuery {
     private final static String APPID   = "J2LY8L-4EYJWU38EA";
 
 
