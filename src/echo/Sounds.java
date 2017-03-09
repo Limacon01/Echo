@@ -6,12 +6,18 @@ import javax.sound.sampled.Clip;
 import java.net.URL;
 
 /**
- * Sounds file
+ * The Sounds class selects the appropriate wav file to play
+ * when the Echo is turned on or off, or when there is an
+ * error in picking up audio.
+ *
+ * @author Alex and Mark
+ * @version 1.0
  */
-
 class Sounds implements Runnable {
-    //Need to set this to relative so it works
     URL soundRes;
+    /**
+     * @param status    the status of the Echo which determines which sound file is to be used
+     */
     Sounds(String status){
         switch (status) {
             case "ON":
@@ -26,6 +32,9 @@ class Sounds implements Runnable {
         }
     }
 
+    /**
+     * This run method will play the selected wav file
+     */
     @Override
     public void run() {
         try {
