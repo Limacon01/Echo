@@ -1,11 +1,7 @@
 package echo;
 import echo.Computational.*;
-import echo.*;
 
 import javax.sound.sampled.AudioInputStream;
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Echo implements SoundDetectedListener, StartListeningListener {
     //Setup gui -- where sound is integrated.
