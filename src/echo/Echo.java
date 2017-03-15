@@ -1,20 +1,19 @@
 package echo;
+
 import echo.Computational.*;
-import echo.*;
-
 import javax.sound.sampled.AudioInputStream;
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * Main controller for the Echo device
+ */
 public class Echo implements SoundDetectedListener, StartListeningListener {
-    //Setup gui -- where sound is integrated.
     private static final String  FILENAME   = "query.wav";
     private static final String  INPUT      = "./query.wav";
     private static final String  KEY1       = "1ac04cd4347b49a2b89052edf1a45ef0";
 
     private GUI gui;
     private Detective detective;
+    private TextToSpeech t2s = new TextToSpeech();
 
     Echo(){
         gui = new GUI();
@@ -23,20 +22,34 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
         detective = new Detective();
         detective.addListener(this);
 
-        //Send to wolfram
-        //Text to speech
+        //TODO: Text to speech
+        t2s.outputSpeechToFile("Frankly, my dear I don't give a damn!");
+
+        Sounds s = new Sounds("ANSWER");
+        s.run();
     }
 
+    /**
+     * Once a device is ready to start listening
+     * This starts detective, which listens for a sound
+     * over a specific threshold
+     */
+    @Override
+    public void startListening() {
+        detective.run();
+    }
+
+    /**
+     * Once a sound is detected, record sound for 5s
+     * and process it
+     */
     @Override
     public void soundDetected() {
         //Record sound for 5s
         System.out.println("Sound detected");
         AudioInputStream ais = RecordSound.setupStream();
         RecordSound.recordSound(FILENAME, RecordSound.readStream(ais));
-
-        /*
-         * Convert speech to text.
-        */
+        RecordSound.closeDataLine();
         processSpeechToText();
     }
 
@@ -48,12 +61,5 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
         //This is JSON text recieved back from microsoft
         System.out.println(jsonText);
         return jsonText;
-    }
-
-    // This event is created by the GUI when the ON switch is clicked in ON/OFF mode
-    @Override
-    public void startListening() {
-        // Detective creates an *insert helpfully named event* once a sound is detected
-        detective.run();
     }
 }

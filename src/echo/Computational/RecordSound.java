@@ -18,6 +18,7 @@ public class RecordSound {
   private static final int     SAMPLE_RATE     = 32000;  /* MHz  */
   private static final int     SAMPLE_SIZE     = 16;    /* bits */
   private static final int     SAMPLE_CHANNELS = 1;     /* mono */
+  static TargetDataLine line;
 
   /*
    * Set up stream.
@@ -32,7 +33,7 @@ public class RecordSound {
                            , true /* little-endian */
                 );
         DataLine.Info    info = new DataLine.Info( TargetDataLine.class, af );
-        TargetDataLine   line = (TargetDataLine) AudioSystem.getLine( info );
+        line = (TargetDataLine) AudioSystem.getLine( info );
         AudioInputStream stm  = new AudioInputStream( line );
         line.open( af );
         line.start();
@@ -46,6 +47,12 @@ public class RecordSound {
     }
   }
 
+    /**
+     *
+     */
+  public static void closeDataLine(){
+      line.close();
+  }
 
   /*
    * Read stream.
@@ -99,13 +106,5 @@ public class RecordSound {
         System.out.println("3");
         System.exit( 1 );
     }
-  }
-
-  /*
-   * Record sound.
-   */
-  public static void main( String[] argv ) {
-    AudioInputStream stm = setupStream();
-    recordSound( FILENAME, readStream( stm ) );
   }
 }

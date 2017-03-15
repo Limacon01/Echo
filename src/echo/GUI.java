@@ -1,36 +1,29 @@
 package echo;
-/*
-* What does this do?
-*   Initiates GUI for an Echo in Off mode
-*   Toggle button for power
-*   When power button is turned on, lights will glow Cyan to show listening mode has been entere
-*/
-
-/*
-* To do:
-*   Get JFrame functioning properly on multiple resolutions
-*   Add light mode for answer state
-*   Integrate listeners for microphone use for answer mode
-*   Make 3D model of Amazon Echo for nicer viewing
-*   Make GIFs for lights
-*   Implement testing
-*/
 
 import echo.Computational.StartListeningListener;
-
 import javax.swing.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Initiates GUI for an Echo in Off mode
+ * Toggle button for power
+ * When power button is turned on, lights will glow Cyan to show listening mode has been entered
+ * (not fully functional at the moment)
+ * TODO:  add light mode for answer state
+ * TODO:  integrate listeners for microphone use for answer mode
+ * TODO:  make GIFs for lights
+ */
 public class GUI extends JFrame {
     private static final int startupCoolDown = 0;
     private static final int shutdownCoolDown = 0;
     private boolean isDisabled = false;
 
     private static String status = "OFF"; //Global variable each operating mode
-    private static String resdir = "./src/echo/Resources/Images/";
     private final PowerButton   power = new PowerButton();
     private final Light         light = new Light();
+
     private Sounds sound;
 
     private List<StartListeningListener> startListeningListeners = new ArrayList<>();
@@ -40,20 +33,29 @@ public class GUI extends JFrame {
         startListeningListeners.add(sdl);
     }
 
-    /* On/Off button */
+    /**
+     * Two-state button with a different icon for each state
+     * State change triggered by a mouse click upon button
+     */
     private class PowerButton extends JToggleButton {
         PowerButton() {
-            setIcon(new ImageIcon(resdir + "powerOFF.png"));
-            setSelectedIcon(new ImageIcon(resdir + "powerON.png"));
+            URL powerOFFLoc = this.getClass().getResource("/echo/Resources/Images/powerOFF.png");
+            URL powerONLoc = this.getClass().getResource("/echo/Resources/Images/powerON.png");
+
+            setIcon(new ImageIcon(powerOFFLoc));
+            setSelectedIcon(new ImageIcon(powerONLoc));
             setBorder(null);
             setContentAreaFilled(false);
         }
     }
 
-    /* Lights */
+    /**
+     * Single state button to act solely as a graphic
+     */
     private class Light extends JButton {
         Light() {
-            setIcon(new ImageIcon(resdir + "light" + status + ".png"));
+            URL light = this.getClass().getResource("/echo/Resources/Images/" + "light" + status + ".png");
+            setIcon(new ImageIcon(light));
             setBorder(null);
             setContentAreaFilled(false);
         }
@@ -61,7 +63,8 @@ public class GUI extends JFrame {
 
     public GUI() {
         setTitle("Echo");
-        setContentPane(new JLabel(new ImageIcon(resdir + "background.png")));
+        URL background = this.getClass().getResource("/echo/Resources/Images/background.png");
+        setContentPane(new JLabel(new ImageIcon(background)));
         setLayout(null);
 
         power.setBounds(150, 615,  115,   105);     add(power);
@@ -75,7 +78,6 @@ public class GUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
 
-
         /*
         *   Illuminate transitions from:
         *       OFF -> Listening mode
@@ -84,11 +86,15 @@ public class GUI extends JFrame {
         power.addActionListener(ev -> {
             if (!isDisabled) {
                 isDisabled = true;
+
+                System.out.println("Trying to set to listen");
+
                 switch (status) {
                 /* Turning echo from off to on */
                     case "OFF":
                         status = "LISTEN";
-                        light.setIcon(new ImageIcon(resdir + "light" + status + ".png"));
+                        URL lightListenRes = this.getClass().getResource("/echo/Resources/Images/lightLISTEN.png");
+                        light.setIcon(new ImageIcon(lightListenRes));
 
                         sound = new Sounds("ON");
                         sound.run();
@@ -97,6 +103,7 @@ public class GUI extends JFrame {
                         for (StartListeningListener sll: startListeningListeners) {
                             sll.startListening();
                         }
+
 
                         try {
                             Thread.sleep(startupCoolDown);
@@ -108,15 +115,14 @@ public class GUI extends JFrame {
                 /* Turning echo from on to off */
                     case "LISTEN":
                         status = "OFF";
-                        light.setIcon(new ImageIcon(resdir + "light" + status + ".png"));
+                        URL lightOFFRes = this.getClass().getResource("/echo/Resources/Images/lightOFF.png");
+                        light.setIcon(new ImageIcon(lightOFFRes));
 
                         sound = new Sounds("OFF");
                         sound.run();
 
-                        //Do echo stuff
-
                         try {
-                            Thread.sleep(startupCoolDown);
+                            Thread.sleep(shutdownCoolDown);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

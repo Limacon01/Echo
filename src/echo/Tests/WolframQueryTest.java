@@ -1,6 +1,7 @@
-package echo.Computational;
+package echo.Tests;
 
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import echo.Computational.WolframQuery;
 import org.junit.Test;
 
 import java.lang.reflect.*;
@@ -8,7 +9,9 @@ import java.lang.reflect.*;
 import static org.junit.Assert.*;
 
 /**
- * Created by James on 08/03/2017.
+ * @author James
+ * @version 1.0
+ * Testing methods for WolframQuery Class
  */
 public class WolframQueryTest {
     private final static String sampleQuestion1 = "What is the melting point of copper?";
@@ -24,7 +27,7 @@ public class WolframQueryTest {
      */
     @Test
     public void testSolve() {
-        WolframQuery wq = new WolframQuery();
+        echo.Computational.WolframQuery wq = new WolframQuery();
         Class c = wq.getClass();
 
         // Expected response:

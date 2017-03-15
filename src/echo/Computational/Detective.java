@@ -7,6 +7,9 @@ import javax.sound.sampled.LineUnavailableException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @version 1.1
+ */
 public class Detective implements Runnable {
     private static final float  SAMPLE_RATE = 44100f;  /* MHz  */
     private static final int    SAMPLE_SIZE = 16;    /* bits */
@@ -18,10 +21,6 @@ public class Detective implements Runnable {
     public void addListener(SoundDetectedListener sdl) {
         System.out.println("adding listener");
         soundDetectedListeners.add(sdl);
-    }
-
-    public Detective() {
-
     }
 
     //TODO Use setupStream from RecordSound.java (abstract both out)

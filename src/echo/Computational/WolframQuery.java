@@ -3,15 +3,19 @@ package echo.Computational;
 import java.net.URLEncoder;
 import echo.Networking.*;
 
-/*
-* Access the Wolfram Alpha computational knowledge engine.
-*/
-class WolframQuery {
+/**
+ * @version 1.4
+ * Methods for accessing the Wolfram Alpha Computational Knowledge Engine
+ */
+public class WolframQuery {
     private final static String APPID   = "J2LY8L-4EYJWU38EA";
 
-    /*
-    * Solve.
-    */
+
+    /**
+     * Queries Wolfram Alpha with a question
+     * @param   input   Question string
+     * @return          Answer string in JSON format
+     */
     private static String solve( String input ) {
         final String method = "POST";
         final String url
@@ -25,13 +29,14 @@ class WolframQuery {
             };
         final byte[] body = new byte[0];
         byte[] response   = HttpConnect.httpConnect( method, url, headers, body );
-        String xml        = new String( response );
-        return xml;
+        return new String( response );
     }
 
-    /*
-    * URL encode string.
-    */
+    /**
+     * Encode String to utf-8
+     * @param   s       Input testing
+     * @return
+     */
     private static String urlEncode( String s ) {
         try {
           return URLEncoder.encode( s, "utf-8" );
@@ -41,9 +46,10 @@ class WolframQuery {
     }
 
     /**
-     *
-     * @param s is the string to process
-     * @return the processed string
+     * Search for a plaintext answer within a JSON formatted answer
+     * @param   s       Unprocessed JSON string
+     * @return          Either the query result or a message describing an unsuccessful query
+     *                  in plaintext format
      */
     private String processJson(String s) {
         if (!s.substring(20,36).equals("\"success\" : true")) {
@@ -59,16 +65,15 @@ class WolframQuery {
         }
         String resultPod = s.substring(resultPodIndex);
         String resultString = resultPod.substring(resultPod.indexOf("\"plaintext\" : ") + 15);
-
         int endResultString = resultString.indexOf("\"");
-        String finalResult = resultString.substring(0, endResultString);
-
-        return finalResult;
+        return resultString.substring(0, endResultString);
     }
 
-    /*
-    * Solve problem giving solution.
-    */
+    /**
+     * Attempt to find a solution to a question
+     * @param   question    User question
+     * @return              A processed solution or message describing an unsuccessful query
+     */
     public String processQuestion( String question ) {
         String solution = solve(question);
         String processedSolution = processJson(solution);
