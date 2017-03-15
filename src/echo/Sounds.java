@@ -5,6 +5,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * The Sounds class selects the appropriate wav file to play
@@ -28,16 +30,11 @@ public class Sounds implements Runnable {
                 soundRes = this.getClass().getResource("/echo/Resources/Sounds/offSound.wav");
                 break;
             case "ANSWER":
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                soundRes = this.getClass().getResource("./speechOutput.wav");
+                soundRes = this.getClass().getResource("speechOutput.wav");
                 break;
-            /*default:
+            default:
                 soundRes = this.getClass().getResource("/echo/Resources/Sounds/errorMessage.wav");
-                break;*/
+                break;
         }
     }
 

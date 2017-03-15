@@ -6,23 +6,30 @@ import echo.Sounds;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.DataOutputStream;
+import java.net.URL;
+
 /*
  * Text to speech conversion using Microsoft Cognitive Services.
  */
 public class TextToSpeech {
-    final static String TEXT   = "Frankly, my dear, I don't give a damn";
     final static String LANG   = "en-US";
     final static String GENDER = "Female";
-    final static String OUTPUT = "speechOutput.wav";
+    final static String OUTPUT = "src/echo/speechOutput.wav";
     final static String FORMAT = "riff-16khz-16bit-mono-pcm";
 
     /*final static String KEY1   = "b750f20fdc0c4ac8aaf59073d98c1a05";*/
     final static String KEY2   = "1ac04cd4347b49a2b89052edf1a45ef0";
 
+    public void outputSpeechToFile(String text){
+        final String token  = renewAccessToken( KEY2 );
+        final byte[] speech = synthesizeSpeech( token, text, LANG, GENDER, FORMAT );
+        writeData( speech, OUTPUT );
+    }
+
     /*
      * Renew an access token --- they expire after 10 minutes.
      */
-    static String renewAccessToken( String key1 ) {
+    public static String renewAccessToken( String key1 ) {
         final String method = "POST";
         final String url =
                 "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
@@ -38,7 +45,7 @@ public class TextToSpeech {
     /*
      * Synthesize speech.
      */
-    static byte[] synthesizeSpeech( String token, String text
+    public static byte[] synthesizeSpeech( String token, String text
             , String lang,  String gender
             , String format ) {
         final String method = "POST";
@@ -64,7 +71,7 @@ public class TextToSpeech {
     /*
      * Write data to file.
      */
-    static void writeData( byte[] buffer, String name ) {
+    public static void writeData( byte[] buffer, String name ) {
         try {
             File             file = new File( name );
             FileOutputStream fos  = new FileOutputStream( file );
@@ -75,17 +82,5 @@ public class TextToSpeech {
         } catch ( Exception ex ) {
             System.out.println( ex ); System.exit( 1 ); return;
         }
-    }
-
-    /*
-     * Convert text to speech.
-     */
-    public static void main( String[] argv ) {
-        final String token  = renewAccessToken( KEY2 );
-        final byte[] speech = synthesizeSpeech( token, TEXT, LANG, GENDER, FORMAT );
-        //writeData( speech, OUTPUT );
-
-        Sounds s = new Sounds("OFF");
-        s.run();
     }
 }

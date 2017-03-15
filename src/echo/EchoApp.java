@@ -6,9 +6,5 @@ package echo;
 public class EchoApp{
     public static void main(String[] argc){
         Echo echo = new Echo();
-
-        Sounds s = new Sounds("ON");
-        s.run();
-
     }
 }

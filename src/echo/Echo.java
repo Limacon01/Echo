@@ -13,6 +13,7 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
 
     private GUI gui;
     private Detective detective;
+    private TextToSpeech t2s = new TextToSpeech();
 
     Echo(){
         gui = new GUI();
@@ -20,7 +21,12 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
 
         detective = new Detective();
         detective.addListener(this);
+
         //TODO: Text to speech
+        t2s.outputSpeechToFile("Frankly, my dear I don't give a damn!");
+
+        Sounds s = new Sounds("ANSWER");
+        s.run();
     }
 
     /**
