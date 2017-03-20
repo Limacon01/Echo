@@ -52,16 +52,22 @@ public class WolframQuery {
      *                  in plaintext format
      */
     private String processJson(String s) {
+        int resultPodIndex;
+
         if (!s.substring(20,36).equals("\"success\" : true")) {
             return "Query unsuccessful";
         }
-        if (!s.contains("\"title\" : \"Result\"")) {
-            return "No results found";
+
+        if (s.contains("\"title\" : \"Result\"")) {
+            resultPodIndex = s.indexOf("\"title\" : \"Result\"");
+        } else if (s.contains("\"title\" : \"Value\"")) {
+            resultPodIndex = s.indexOf("\"title\" : \"Value\"");
+        } else {
+            return "No results found ";
         }
 
-        int resultPodIndex = s.indexOf("\"title\" : \"Result\"");
         if (!s.substring(resultPodIndex).contains("\"plaintext\" : ")) {
-            return "No results found";
+            return "No results found ";
         }
         String resultPod = s.substring(resultPodIndex);
         String resultString = resultPod.substring(resultPod.indexOf("\"plaintext\" : ") + 15);
@@ -76,9 +82,8 @@ public class WolframQuery {
      */
     public String processQuestion( String question ) {
         String solution = solve(question);
-        String processedSolution = processJson(solution);
-        //System.out.println(processedSolution);
-        return processedSolution;
+        System.out.println("\n -- " + solution + " -- \n");
+        return processJson(solution);
     }
 }
 
