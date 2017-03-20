@@ -13,12 +13,13 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
     private static final String  KEY1       = "1ac04cd4347b49a2b89052edf1a45ef0";
     private static final String  ERROR_SEND = "I'm sorry, I could not process the voice command";
     private static final String  ERROR_RETRY= "I'm sorry, I could not understand that - please repeat";
-
+    private static final float   CONFIDENCE_THREASHOLD =  0.4f;
 
     private GUI gui;
     private Detective detective;
     private TextToSpeech t2s = new TextToSpeech();
     private WolframQuery wq = new WolframQuery();
+
 
     Echo(){
         gui = new GUI();
@@ -32,19 +33,39 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
         final String token  = SpeechToText.renewAccessToken( KEY1 );
         final byte[] speech = SpeechToText.readData( INPUT );
         final String jsonText   = SpeechToText.recognizeSpeech( token, speech );
-
         return parseJsonFromMicrosoft(jsonText);
     }
 
+    /**
+     * This function takes a recorded question string in json format
+     * and returns the processed result string as long as Microsoft's
+     * cognitive service's confidence threshold is above a defined value
+     * @param json  input string
+     * @return
+     */
     String parseJsonFromMicrosoft(String json){
-        String parsedString = "";
+        String succStr = "\"status\":\"success\"";
+        int status = json.indexOf(succStr);
 
-        //If status success
-        //find name:""
-        //Else return ""
+        //If we get a success
+        if(status != -1){
+            // and confidence is above 0.4
+            String confidenceString = "\"confidence\":\"";
+            int confidenceThreshold = json.indexOf(confidenceString) + confidenceString.length();
+            float foundThreshold = Float.parseFloat(json.substring(confidenceThreshold, confidenceThreshold+5));
+            if(foundThreshold > CONFIDENCE_THREASHOLD){
+                //We're sure this the question string
+                String startOfQuestion = "\"name\":\"";
+                String endOfQuestion = "\",\"lexical\":";
 
-        System.out.println(json);
-        return parsedString;
+                int questionIndex = json.indexOf(startOfQuestion) + startOfQuestion.length();
+                int endQuestionIn = json.indexOf(endOfQuestion);
+                String parsedString = json.substring(questionIndex, endQuestionIn);
+                System.out.println(parsedString);
+                return parsedString;
+            }
+        }
+        return "";
     }
 
     /**
@@ -72,9 +93,7 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
         //Currently returning as json
         String toSendToWolfram = processSpeechToText();
 
-        toSendToWolfram = "Who invented the steam engine?";
         File outputFile;
-
         if(toSendToWolfram.equals("")){
             //Create appropriate file
             outputFile =  t2s.outputSpeechToFile(ERROR_SEND);
