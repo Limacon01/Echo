@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 
  */
 public class HttpConnect {
-  final static int TIMEOUT  = 5000; /* ms  */
+  final static int TIMEOUT  = 10000; /* ms  */
   final static int BUFFSIZE = 4096; /* 4KB */
 
   public static byte[] httpConnect

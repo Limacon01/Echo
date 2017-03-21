@@ -20,10 +20,10 @@ public class TextToSpeech {
     /*final static String KEY1   = "b750f20fdc0c4ac8aaf59073d98c1a05";*/
     final static String KEY2   = "1ac04cd4347b49a2b89052edf1a45ef0";
 
-    public void outputSpeechToFile(String text){
+    public File outputSpeechToFile(String text){
         final String token  = renewAccessToken( KEY2 );
         final byte[] speech = synthesizeSpeech( token, text, LANG, GENDER, FORMAT );
-        writeData( speech, OUTPUT );
+        return writeData( speech, OUTPUT );
     }
 
     /*
@@ -71,7 +71,7 @@ public class TextToSpeech {
     /*
      * Write data to file.
      */
-    public static void writeData( byte[] buffer, String name ) {
+    public static File writeData( byte[] buffer, String name ) {
         try {
             File             file = new File( name );
             FileOutputStream fos  = new FileOutputStream( file );
@@ -79,8 +79,9 @@ public class TextToSpeech {
             dos.write( buffer );
             dos.flush();
             dos.close();
+            return file;
         } catch ( Exception ex ) {
-            System.out.println( ex ); System.exit( 1 ); return;
+            System.out.println( ex ); System.exit( 1 ); return null;
         }
     }
 }

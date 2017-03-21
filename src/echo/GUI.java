@@ -1,6 +1,7 @@
 package echo;
 
 import echo.Computational.StartListeningListener;
+
 import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,11 +17,8 @@ import java.util.List;
  * TODO:  make GIFs for lights
  */
 public class GUI extends JFrame {
-    private static final int startupCoolDown = 0;
-    private static final int shutdownCoolDown = 0;
-    private boolean isDisabled = false;
 
-    private static String status = "OFF"; //Global variable each operating mode
+    private String status = "OFF";
     private final PowerButton   power = new PowerButton();
     private final Light         light = new Light();
 
@@ -37,13 +35,10 @@ public class GUI extends JFrame {
      * Two-state button with a different icon for each state
      * State change triggered by a mouse click upon button
      */
-    private class PowerButton extends JToggleButton {
+    private class PowerButton extends JButton {
         PowerButton() {
             URL powerOFFLoc = this.getClass().getResource("/echo/Resources/Images/powerOFF.png");
-            URL powerONLoc = this.getClass().getResource("/echo/Resources/Images/powerON.png");
-
             setIcon(new ImageIcon(powerOFFLoc));
-            setSelectedIcon(new ImageIcon(powerONLoc));
             setBorder(null);
             setContentAreaFilled(false);
         }
@@ -62,6 +57,11 @@ public class GUI extends JFrame {
     }
 
     public GUI() {
+        initGUI();
+        addPowerListener();
+    }
+
+    private void initGUI(){
         setTitle("Echo");
         URL background = this.getClass().getResource("/echo/Resources/Images/background.png");
         setContentPane(new JLabel(new ImageIcon(background)));
@@ -77,61 +77,81 @@ public class GUI extends JFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
+    }
 
-        /*
-        *   Illuminate transitions from:
-        *       OFF -> Listening mode
-        *       Listening mode -> OFF
-        */
+    /*
+       *   Illuminate transitions from:
+       *       OFF -> Listening mode
+       *       Listening mode -> OFF
+       */
+    private void addPowerListener(){
         power.addActionListener(ev -> {
-            if (!isDisabled) {
-                isDisabled = true;
-
-                System.out.println("Trying to set to listen");
-
-                switch (status) {
+            switch (status) {
                 /* Turning echo from off to on */
-                    case "OFF":
-                        status = "LISTEN";
-                        URL lightListenRes = this.getClass().getResource("/echo/Resources/Images/lightLISTEN.png");
-                        light.setIcon(new ImageIcon(lightListenRes));
-
-                        sound = new Sounds("ON");
-                        sound.run();
-
-                        //Do echo stuff
-                        for (StartListeningListener sll: startListeningListeners) {
-                            sll.startListening();
-                        }
-
-
-                        try {
-                            Thread.sleep(startupCoolDown);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        break;
-
+                case "OFF":
+                    setListen();
+                    break;
                 /* Turning echo from on to off */
-                    case "LISTEN":
-                        status = "OFF";
-                        URL lightOFFRes = this.getClass().getResource("/echo/Resources/Images/lightOFF.png");
-                        light.setIcon(new ImageIcon(lightOFFRes));
-
-                        sound = new Sounds("OFF");
-                        sound.run();
-
-                        try {
-                            Thread.sleep(shutdownCoolDown);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        break;
-                }
-                //Finished turning on or off
-                System.out.println("Status after clicking:" + status);
-                isDisabled = false;
+                case "LISTEN":
+                    setOff();
+                    break;
+                /* Power button disabled while in answer mode */
+                case "ANSWER":
+                    break;
             }
+            //Finished turning on or off
+            System.out.println("Status after clicking:" + status);
         });
+    }
+
+    void updateLight(String status){
+        URL lightSTATUS = this.getClass().getResource("/echo/Resources/Images/light" + status + ".png");
+        light.setIcon(new ImageIcon(lightSTATUS));
+        light.revalidate();
+    }
+
+    void updatePowerButton(String status){
+        URL powerONLoc = this.getClass().getResource("/echo/Resources/Images/power" + status + ".png");
+        power.setIcon(new ImageIcon(powerONLoc));
+        power.revalidate();
+    }
+
+    void setOff(){
+        power.setEnabled(true);
+        setStatus("OFF");
+        sound = new Sounds("OFF", this);
+        sound.run();
+    }
+
+    void setListen(){
+        setStatus("LISTEN");
+        sound = new Sounds("ON", this);
+        sound.run();
+
+        //Once sound has finished playing, and the gui has been updated... startListening for sound
+        SwingUtilities.invokeLater(() -> startListeningListeners.forEach(StartListeningListener::startListening));
+    }
+
+    void setAnswer(){
+        setStatus("ANSWER");
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+
+        //Updates the light
+        updateLight(status);
+
+        //Updates the power button
+        if (status.equals("LISTEN") || status.equals("ANSWER")) {
+            updatePowerButton("ON");
+        }else{
+            updatePowerButton("OFF");
+        }
+        System.out.println("Status:" + status);
+    }
+
+    public String checkStatus(){
+        return status;
     }
 }
