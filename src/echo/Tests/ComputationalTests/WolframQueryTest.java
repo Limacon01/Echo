@@ -1,4 +1,4 @@
-package echo.Tests;
+package echo.Tests.ComputationalTests;
 
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import echo.Computational.WolframQuery;
