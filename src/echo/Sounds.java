@@ -80,6 +80,18 @@ public class Sounds implements Runnable {
 
                 while (clip.getMicrosecondLength() != clip.getMicrosecondPosition()) {
                 }
+
+                /*
+                if(gui!= null){
+                    gui.setSoundFinishedPlaying(false);
+                    clip.addLineListener(evt -> {
+                        evt.getLine().close();
+                        sout
+
+                        //re-enable gui
+                        gui.setSoundFinishedPlaying(true);
+                 */
+
                 // re-enable gui
                 gui.setSoundFinishedPlaying(true);
                 System.out.println("Sound finished playing");

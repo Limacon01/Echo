@@ -95,24 +95,11 @@ public class GUI extends JFrame {
                 switch (status) {
                 /* Turning echo from off to on */
                     case "OFF":
-                        status = "LISTEN";
-                        URL lightListenRes = this.getClass().getResource("/echo/Resources/Images/lightLISTEN.png");
-                        light.setIcon(new ImageIcon(lightListenRes));
-
-                        sound = new Sounds("ON", this);
-                        sound.run();
-
-                        //Calls the startListning method for each startListeningListener
-                        startListeningListeners.forEach(StartListeningListener::startListening);
+                        turnEchoOn();
                         break;
                 /* Turning echo from on to off */
                     case "LISTEN":
-                        status = "OFF";
-                        URL lightOFFRes = this.getClass().getResource("/echo/Resources/Images/lightOFF.png");
-                        light.setIcon(new ImageIcon(lightOFFRes));
-
-                        sound = new Sounds("OFF", this);
-                        sound.run();
+                        turnEchoOff();
                         break;
                 }
                 //Finished turning on or off
@@ -120,6 +107,27 @@ public class GUI extends JFrame {
                 isDisabled = false;
             }
         });
+    }
+
+    void turnEchoOff(){
+        status = "OFF";
+        URL lightOFFRes = this.getClass().getResource("/echo/Resources/Images/lightOFF.png");
+        light.setIcon(new ImageIcon(lightOFFRes));
+
+        sound = new Sounds("OFF", this);
+        sound.run();
+    }
+
+    void turnEchoOn(){
+        status = "LISTEN";
+        URL lightListenRes = this.getClass().getResource("/echo/Resources/Images/lightLISTEN.png");
+        light.setIcon(new ImageIcon(lightListenRes));
+
+        sound = new Sounds("ON", this);
+        sound.run();
+
+        //Calls the startListning method for each startListeningListener
+        startListeningListeners.forEach(StartListeningListener::startListening);
     }
 
     public void setSoundFinishedPlaying(Boolean status){
