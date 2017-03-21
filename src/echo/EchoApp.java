@@ -8,8 +8,6 @@ public class EchoApp{
 
     //TODO testing
     //TODO more javadoc
-    //TODO james' json parsing additional features
-        //didyoumean... define... Decimal approximation... Definitions (take only first definition)
     //TODO: test if key works... if not swap keys
     //TODO fix light bug
 

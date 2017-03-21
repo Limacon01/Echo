@@ -1,6 +1,8 @@
 package echo.Computational;
 
 import java.net.URLEncoder;
+import java.util.ArrayList;
+
 import echo.Networking.*;
 
 /**
@@ -46,33 +48,49 @@ public class WolframQuery {
     }
 
     /**
-     * Search for a plaintext answer within a JSON formatted answer
+     * Search for a plaintext answer within a JSON formatted answer. This method looks for
+     * specific answers, namely: results, values, responses, definitions and input
+     * interpretations
      * @param   s       Unprocessed JSON string
      * @return          Either the query result or a message describing an unsuccessful query
      *                  in plaintext format
      */
     private String processJson(String s) {
-        int resultPodIndex;
+        int resultPodIndex = 0;
 
         if (!s.substring(20,36).equals("\"success\" : true")) {
             return "Query unsuccessful";
         }
+        ArrayList<String> podStrings = new ArrayList<>();
+        String titleString = "\"title\" : ";
+        podStrings.add("\"Result\"");
+        podStrings.add("\"Value\"");
+        podStrings.add("\"Response\"");
+        podStrings.add("\"Definitions\"");
+        podStrings.add("\"Input interpretation\"");
 
-        if (s.contains("\"title\" : \"Result\"")) {
-            resultPodIndex = s.indexOf("\"title\" : \"Result\"");
-        } else if (s.contains("\"title\" : \"Value\"")) {
-            resultPodIndex = s.indexOf("\"title\" : \"Value\"");
-        } else {
-            return "No results found ";
+        int i;
+        for (i=0; i<podStrings.size(); i++) {
+            if (s.contains(titleString + podStrings.get(i))) {
+                resultPodIndex = s.indexOf(titleString + podStrings.get(i));
+                break;
+            }
         }
-
-        if (!s.substring(resultPodIndex).contains("\"plaintext\" : ")) {
+        if (resultPodIndex == 0 || !s.substring(resultPodIndex).contains("\"plaintext\" : ")) {
             return "No results found ";
         }
         String resultPod = s.substring(resultPodIndex);
         String resultString = resultPod.substring(resultPod.indexOf("\"plaintext\" : ") + 15);
         int endResultString = resultString.indexOf("\"");
-        return resultString.substring(0, endResultString);
+        //May contain multiple definitions, interpretations etc.:
+        String longResult = resultString.substring(0, endResultString);
+        String shortResult = longResult.replaceAll("noun", "");
+        //shortResult = shortResult.split("\\n")[0];
+        if (shortResult.contains("\\n")) {
+            shortResult = shortResult.substring(0, shortResult.indexOf("\\n"));
+        }
+        System.out.println(shortResult);
+        return shortResult;
     }
 
     /**
