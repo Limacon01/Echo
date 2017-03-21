@@ -1,15 +1,10 @@
 package echo.Computational;
 
-import java.io.File;
+import javax.sound.sampled.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.InputStream;
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.TargetDataLine;
 
 
 public class RecordSound {
@@ -17,6 +12,7 @@ public class RecordSound {
     private static final int     SAMPLE_RATE     = 32000;  /* MHz  */
     private static final int     SAMPLE_SIZE     = 16;     /* bits */
     private static final int     SAMPLE_CHANNELS = 1;      /* mono */
+    private static boolean       recording = true;
     static TargetDataLine line;
 
     /*
@@ -64,12 +60,14 @@ public class RecordSound {
             byte buffer[]   = new byte[ bufferSize ];
 
             for ( int counter = TIMER; counter > 0; counter-- ) {
-                int n = stm.read( buffer, 0, buffer.length );
-                System.out.println("Listening...");
-                if ( n > 0 ) {
-                    bos.write( buffer, 0, n );
-                } else {
-                    break;
+                if(recording) {
+                    int n = stm.read(buffer, 0, buffer.length);
+                    System.out.println("Listening...");
+                    if (n > 0) {
+                        bos.write(buffer, 0, n);
+                    } else {
+                        break;
+                    }
                 }
             }
 

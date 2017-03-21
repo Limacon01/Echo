@@ -5,7 +5,6 @@ package echo;
  */
 public class EchoApp{
     //TODO stop the button working when it is in answer mode
-    //TODO fix light bug
 
     //TODO testing
     //TODO more javadoc

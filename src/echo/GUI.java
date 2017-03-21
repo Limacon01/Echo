@@ -1,6 +1,7 @@
 package echo;
 
 import echo.Computational.StartListeningListener;
+
 import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,8 +17,6 @@ import java.util.List;
  * TODO:  make GIFs for lights
  */
 public class GUI extends JFrame {
-    private boolean isDisabled           = false;
-    private boolean soundFinished = true;
 
     private String status = "OFF";
     private final PowerButton   power = new PowerButton();
@@ -36,13 +35,10 @@ public class GUI extends JFrame {
      * Two-state button with a different icon for each state
      * State change triggered by a mouse click upon button
      */
-    private class PowerButton extends JToggleButton {
+    private class PowerButton extends JButton {
         PowerButton() {
             URL powerOFFLoc = this.getClass().getResource("/echo/Resources/Images/powerOFF.png");
-            URL powerONLoc = this.getClass().getResource("/echo/Resources/Images/powerON.png");
-
             setIcon(new ImageIcon(powerOFFLoc));
-            setSelectedIcon(new ImageIcon(powerONLoc));
             setBorder(null);
             setContentAreaFilled(false);
         }
@@ -90,48 +86,72 @@ public class GUI extends JFrame {
        */
     private void addPowerListener(){
         power.addActionListener(ev -> {
-            if (!isDisabled && soundFinished) {
-                isDisabled = true;
-                switch (status) {
+            switch (status) {
                 /* Turning echo from off to on */
-                    case "OFF":
-                        turnEchoOn();
-                        break;
+                case "OFF":
+                    setListen();
+                    break;
                 /* Turning echo from on to off */
-                    case "LISTEN":
-                        turnEchoOff();
-                        break;
-                }
-                //Finished turning on or off
-                System.out.println("Status after clicking:" + status);
-                isDisabled = false;
+                case "LISTEN":
+                    setOff();
+                    break;
+                /* Power button disabled while in answer mode */
+                case "ANSWER":
+                    break;
             }
+            //Finished turning on or off
+            System.out.println("Status after clicking:" + status);
         });
     }
 
-    void turnEchoOff(){
-        status = "OFF";
-        URL lightOFFRes = this.getClass().getResource("/echo/Resources/Images/lightOFF.png");
-        light.setIcon(new ImageIcon(lightOFFRes));
+    void updateLight(String status){
+        URL lightSTATUS = this.getClass().getResource("/echo/Resources/Images/light" + status + ".png");
+        light.setIcon(new ImageIcon(lightSTATUS));
+        light.revalidate();
+    }
 
+    void updatePowerButton(String status){
+        URL powerONLoc = this.getClass().getResource("/echo/Resources/Images/power" + status + ".png");
+        power.setIcon(new ImageIcon(powerONLoc));
+        power.revalidate();
+    }
+
+    void setOff(){
+        power.setEnabled(true);
+        setStatus("OFF");
         sound = new Sounds("OFF", this);
         sound.run();
     }
 
-    void turnEchoOn(){
-        status = "LISTEN";
-        URL lightListenRes = this.getClass().getResource("/echo/Resources/Images/lightLISTEN.png");
-        light.setIcon(new ImageIcon(lightListenRes));
-
+    void setListen(){
+        setStatus("LISTEN");
         sound = new Sounds("ON", this);
         sound.run();
 
-        //Calls the startListning method for each startListeningListener
-        startListeningListeners.forEach(StartListeningListener::startListening);
+        //Once sound has finished playing, and the gui has been updated... startListening for sound
+        SwingUtilities.invokeLater(() -> startListeningListeners.forEach(StartListeningListener::startListening));
     }
 
-    public void setSoundFinishedPlaying(Boolean status){
-        soundFinished  = status;
-        System.out.println("Spencer is disabled: " + isDisabled);
+    void setAnswer(){
+        setStatus("ANSWER");
+    }
+
+    public void setStatus(String status){
+        this.status = status;
+
+        //Updates the light
+        updateLight(status);
+
+        //Updates the power button
+        if (status.equals("LISTEN") || status.equals("ANSWER")) {
+            updatePowerButton("ON");
+        }else{
+            updatePowerButton("OFF");
+        }
+        System.out.println("Status:" + status);
+    }
+
+    public String checkStatus(){
+        return status;
     }
 }

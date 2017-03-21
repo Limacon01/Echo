@@ -1,5 +1,6 @@
 package echo;
 
+import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -54,6 +55,23 @@ public class Sounds implements Runnable {
     }
 
     /**
+     * @param file
+     * @return
+     */
+    double getLengthOfFile(File file){
+        AudioInputStream audioInputStream = null;
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(file);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        AudioFormat format = audioInputStream.getFormat();
+        long frames = audioInputStream.getFrameLength();
+        double duration = (frames+0.0) / format.getFrameRate();
+        return duration;
+    }
+
+    /**
      * This run method will play the selected wav file
      */
     @Override
@@ -73,29 +91,6 @@ public class Sounds implements Runnable {
             }
             clip.open(as);
             clip.start();
-
-            if(gui != null ){
-                // disable gui
-                gui.setSoundFinishedPlaying(false);
-
-                while (clip.getMicrosecondLength() != clip.getMicrosecondPosition()) {
-                }
-
-                /*
-                if(gui!= null){
-                    gui.setSoundFinishedPlaying(false);
-                    clip.addLineListener(evt -> {
-                        evt.getLine().close();
-                        sout
-
-                        //re-enable gui
-                        gui.setSoundFinishedPlaying(true);
-                 */
-
-                // re-enable gui
-                gui.setSoundFinishedPlaying(true);
-                System.out.println("Sound finished playing");
-            }
         } catch(Exception e){
             e.printStackTrace();
         }

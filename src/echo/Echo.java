@@ -1,8 +1,12 @@
 package echo;
 
 import echo.Computational.*;
+
 import javax.sound.sampled.AudioInputStream;
+import javax.swing.*;
 import java.io.File;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Main controller for the Echo device
@@ -14,6 +18,7 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
     private static final String  ERROR_SEND = "I'm sorry, I could not process the voice command";
     private static final String  ERROR_RETRY= "I'm sorry, I could not understand that - please repeat";
     private static final float   CONFIDENCE_THREASHOLD =  0.4f;
+    private static boolean setListen = true;
 
     private GUI gui;
     private Detective detective;
@@ -26,7 +31,7 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
         gui.addListener(this);
 
         detective = new Detective();
-        detective.addListener(this);;
+        detective.addListener(this);
     }
 
     String processSpeechToText(){
@@ -84,32 +89,66 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
      */
     @Override
     public void soundDetected() {
+        //Check if the user wants to stop
+        if (gui.checkStatus().equals("OFF")){
+            setListen = false;
+        }
+
         //Record sound for 5s
         System.out.println("Sound detected");
         AudioInputStream ais = RecordSound.setupStream();
         RecordSound.recordSound(FILENAME, RecordSound.readStream(ais));
         RecordSound.closeDataLine();
 
-        //Currently returning as json
-        String toSendToWolfram = processSpeechToText();
-
-        File outputFile;
-        if(toSendToWolfram.equals("")){
-            //Create appropriate file
-            outputFile =  t2s.outputSpeechToFile(ERROR_SEND);
-            System.out.println("attempting to play error message");
-        }else {
-            //Send to wolfram
-            String result = wq.processQuestion(toSendToWolfram);
-
-            //Create appropriate file
-            outputFile = t2s.outputSpeechToFile(result);
+        //Check if the user wants to stop
+        if (gui.checkStatus().equals("OFF")){
+            setListen = false;
         }
-        //Play text-to-speech
 
-        System.out.println();
-        Sounds s = new Sounds(outputFile);
-        s.run();
+        gui.setAnswer();
+
+        //Once the gui has been updated
+        SwingUtilities.invokeLater(() -> {
+            //Currently returning as json
+            String toSendToWolfram = processSpeechToText();
+
+
+            File outputFile;
+            if (toSendToWolfram.equals("")) {
+                //Create appropriate file
+                outputFile = t2s.outputSpeechToFile(ERROR_SEND);
+                System.out.println("attempting to play error message");
+            } else {
+                //Send to wolfram
+                String result = wq.processQuestion(toSendToWolfram);
+
+                //Create appropriate file
+                outputFile = t2s.outputSpeechToFile(result);
+            }
+
+            //Play text-to-speech
+            Sounds s = new Sounds(outputFile);
+            double lengthOfFileSeconds = s.getLengthOfFile(outputFile) + 2;
+            System.out.println(lengthOfFileSeconds);
+            s.run();
+
+            //Disable the GUI for X seconds
+            try {
+                sleep((long) lengthOfFileSeconds * 1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            //Wait until sound has stopped playing... then reset gui
+            if(setListen) {
+                gui.setListen();
+            }else{
+                gui.setOff();
+            }
+        });
     }
+
+
+
 }
 
