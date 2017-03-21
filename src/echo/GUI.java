@@ -16,11 +16,10 @@ import java.util.List;
  * TODO:  make GIFs for lights
  */
 public class GUI extends JFrame {
-    private static final int startupCoolDown = 0;
-    private static final int shutdownCoolDown = 0;
-    private boolean isDisabled = false;
+    private boolean isDisabled           = false;
+    private boolean soundFinished = true;
 
-    private static String status = "OFF"; //Global variable each operating mode
+    private String status = "OFF";
     private final PowerButton   power = new PowerButton();
     private final Light         light = new Light();
 
@@ -62,6 +61,11 @@ public class GUI extends JFrame {
     }
 
     public GUI() {
+        initGUI();
+        addPowerListener();
+    }
+
+    private void initGUI(){
         setTitle("Echo");
         URL background = this.getClass().getResource("/echo/Resources/Images/background.png");
         setContentPane(new JLabel(new ImageIcon(background)));
@@ -77,18 +81,17 @@ public class GUI extends JFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
+    }
 
-        /*
-        *   Illuminate transitions from:
-        *       OFF -> Listening mode
-        *       Listening mode -> OFF
-        */
+    /*
+       *   Illuminate transitions from:
+       *       OFF -> Listening mode
+       *       Listening mode -> OFF
+       */
+    private void addPowerListener(){
         power.addActionListener(ev -> {
-            if (!isDisabled) {
+            if (!isDisabled && soundFinished) {
                 isDisabled = true;
-
-                System.out.println("Trying to set to listen");
-
                 switch (status) {
                 /* Turning echo from off to on */
                     case "OFF":
@@ -96,36 +99,20 @@ public class GUI extends JFrame {
                         URL lightListenRes = this.getClass().getResource("/echo/Resources/Images/lightLISTEN.png");
                         light.setIcon(new ImageIcon(lightListenRes));
 
-                        sound = new Sounds("ON");
+                        sound = new Sounds("ON", this);
                         sound.run();
 
-                        //Do echo stuff
-                        for (StartListeningListener sll: startListeningListeners) {
-                            sll.startListening();
-                        }
-
-
-                        try {
-                            Thread.sleep(startupCoolDown);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                        //Calls the startListning method for each startListeningListener
+                        startListeningListeners.forEach(StartListeningListener::startListening);
                         break;
-
                 /* Turning echo from on to off */
                     case "LISTEN":
                         status = "OFF";
                         URL lightOFFRes = this.getClass().getResource("/echo/Resources/Images/lightOFF.png");
                         light.setIcon(new ImageIcon(lightOFFRes));
 
-                        sound = new Sounds("OFF");
+                        sound = new Sounds("OFF", this);
                         sound.run();
-
-                        try {
-                            Thread.sleep(shutdownCoolDown);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
                         break;
                 }
                 //Finished turning on or off
@@ -133,5 +120,10 @@ public class GUI extends JFrame {
                 isDisabled = false;
             }
         });
+    }
+
+    public void setSoundFinishedPlaying(Boolean status){
+        soundFinished  = status;
+        System.out.println("Spencer is disabled: " + isDisabled);
     }
 }

@@ -76,7 +76,6 @@ public class Detective implements Runnable {
                         }
                     }
                 }
-
             }
         }
     }
