@@ -28,7 +28,6 @@ public class Detective implements Runnable {
         soundDetectedListeners.add(sdl);
     }
 
-    //TODO Use setupStream from RecordSound.java (abstract both out)
     @Override
     public void run() {
         if (!soundDetectedListeners.isEmpty()) {

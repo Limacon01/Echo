@@ -5,12 +5,10 @@ package echo;
  */
 public class EchoApp{
     //TODO stop the button working when it is in answer mode
+    //TODO fix light bug
 
     //TODO testing
     //TODO more javadoc
-    //TODO: test if key works... if not swap keys
-    //TODO fix light bug
-
     public static void main(String[] argc){
         Echo echo = new Echo();
     }
