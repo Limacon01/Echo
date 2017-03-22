@@ -71,9 +71,6 @@ public class Detective implements Runnable {
                 //Analyse samples
                 for (float sample : samples) {
                     float absSample = Math.abs(sample);
-
-                    System.out.println(absSample);
-
                     if (absSample > SAMPLE_THRESHOLD) {
 
                         for (SoundDetectedListener sdl : soundDetectedListeners) {
@@ -87,23 +84,4 @@ public class Detective implements Runnable {
             }
         }
     }
-
-    /**
-     * @param readByte
-     * @param buffer
-     * @param samples
-     * @return
-     */
-//    float[] convertBytesToSample(int readByte, byte[] buffer, float[] samples) {
-//        for (int i = 0, s = 0; i < readByte; ) {
-//            int sample = 0;
-//            //TODO change order if changed to big endian / using same method as recordSounds
-//            sample |= buffer[i++] & 0xFF;
-//            sample |= buffer[i++] << 8;
-//
-//            // normalize to a range of +/-1.0f
-//            samples[s++] = sample;/// 32768f;
-//        }
-//        return samples;
-//    }
 }

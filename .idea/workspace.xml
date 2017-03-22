@@ -6,8 +6,14 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="785ffe9f-61f4-453f-a5ce-a744e89cbf3d" name="Default" comment="">
+    <list default="true" id="785ffe9f-61f4-453f-a5ce-a744e89cbf3d" name="Default" comment="Frozen gui, locked, and broken :)">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/echo/Computational/StartListeningThread.java" afterPath="$PROJECT_DIR$/src/echo/Computational/ThreadedButton.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/query.wav" afterPath="$PROJECT_DIR$/query.wav" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/echo/Computational/Detective.java" afterPath="$PROJECT_DIR$/src/echo/Computational/Detective.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/echo/GUI.java" afterPath="$PROJECT_DIR$/src/echo/GUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/echo/Tests/ComputationalTests/TextToSpeechTest.java" afterPath="$PROJECT_DIR$/src/echo/Tests/ComputationalTests/TextToSpeechTest.java" />
     </list>
     <ignored path="EchoIntegrated.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,24 +44,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="class#Light#0;class#GUI#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Echo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="10" column="60" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="353">
+              <caret line="129" column="26" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#processSpeechToText#0;class#Echo#0" expanded="false" />
+                <element signature="method#parseJsonFromMicrosoft#0;class#Echo#0" expanded="false" />
+                <element signature="e#2982#2983#0" expanded="true" />
+                <element signature="e#3013#3014#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="99" column="32" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#addListener#0;class#GUI#0" expanded="false" />
+                <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
+                <element signature="docComment;class#Light#0;class#GUI#0" expanded="false" />
+                <element signature="method#Light#0;class#Light#0;class#GUI#0" expanded="false" />
+                <element signature="method#initGUI#0;class#GUI#0" expanded="false" />
+                <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
+                <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
+                <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+                <element signature="method#setListen#0;class#GUI#0" expanded="false" />
+                <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Detective.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/echo/Computational/Detective.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="72" column="55" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -63,25 +94,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sounds.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/echo/Sounds.java">
+      <file leaf-file-name="ThreadedButton.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/echo/Computational/ThreadedButton.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="35" column="62" lean-forward="false" selection-start-line="35" selection-start-column="62" selection-end-line="35" selection-end-column="62" />
+            <state relative-caret-position="413">
+              <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TextToSpeech.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/echo/Computational/TextToSpeech.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="599">
-              <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#668#669#0" expanded="true" />
+                <element signature="e#704#705#0" expanded="true" />
+                <element signature="docComment;class#PowerButton#0;class#ThreadedButton#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -99,6 +121,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="IntegrationStageV2" />
+      </map>
+    </option>
+    <push-targets>
+      <push-target-info repo="$PROJECT_DIR$" source="master" target-remote="origin" target-branch="IntegrationStageV2" />
+    </push-targets>
   </component>
   <component name="GradleLocalSettings">
     <option name="modificationStamps">
@@ -120,16 +150,19 @@
         <option value="$PROJECT_DIR$/src/echo/Computational/SpeechToText.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/startDetectionListener.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/StartDetectionListener.java" />
-        <option value="$PROJECT_DIR$/src/echo/Echo.java" />
-        <option value="$PROJECT_DIR$/src/echo/Computational/RecordSound.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/WolframQuery.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/StartListeningListener.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/SoundDetectedListener.java" />
-        <option value="$PROJECT_DIR$/src/echo/Computational/Detective.java" />
-        <option value="$PROJECT_DIR$/src/echo/GUI.java" />
         <option value="$PROJECT_DIR$/src/echo/Sounds.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/TextToSpeech.java" />
+        <option value="$PROJECT_DIR$/src/echo/Tests/ComputationalTests/TextToSpeechTest.java" />
+        <option value="$PROJECT_DIR$/src/echo/Computational/RecordSound.java" />
         <option value="$PROJECT_DIR$/src/echo/EchoApp.java" />
+        <option value="$PROJECT_DIR$/src/echo/Echo.java" />
+        <option value="$PROJECT_DIR$/src/echo/Computational/StartListeningThread.java" />
+        <option value="$PROJECT_DIR$/src/echo/GUI.java" />
+        <option value="$PROJECT_DIR$/src/echo/Computational/Detective.java" />
+        <option value="$PROJECT_DIR$/src/echo/Computational/ThreadedButton.java" />
       </list>
     </option>
   </component>
@@ -141,8 +174,20 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="width" value="1440" />
-    <option name="height" value="896" />
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="1301" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -159,25 +204,32 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Echo" />
+              <option name="myItemId" value="SWETeam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SWETeam" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Echo" />
+              <option name="myItemId" value="SWETeam" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Echo" />
+              <option name="myItemId" value="SWETeam" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Echo" />
+              <option name="myItemId" value="SWETeam" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -187,29 +239,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Echo" />
+              <option name="myItemId" value="SWETeam" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Echo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="echo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Echo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Echo" />
+              <option name="myItemId" value="SWETeam" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -220,44 +254,14 @@
               <option name="myItemId" value="echo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sounds" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Echo" />
+              <option name="myItemId" value="SWETeam" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Echo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="echo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Echo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Echo" />
+              <option name="myItemId" value="SWETeam" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -275,7 +279,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
@@ -288,20 +291,20 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/echo/Resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Mark\Desktop\SWETeam\Echo\src\echo\Resources\Sounds" />
-      <recent name="C:\Users\Mark\Desktop\EchoIntegrated\src\echo\Resources" />
-      <recent name="C:\Users\Mark\Desktop\EchoIntegrated\src\echo" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Mark\Desktop\SWETeam\Echo\src\echo\Computational" />
       <recent name="C:\Users\Mark\Desktop\EchoIntegrated\src\echo" />
       <recent name="C:\Users\Mark\Desktop\EchoIntegrated\src\echo\Resources\Images" />
       <recent name="C:\Users\Mark\Desktop\EchoIntegrated\src\echo\Resources\Sound" />
       <recent name="C:\Users\Mark\Desktop\EchoIntegrated\src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mark\Desktop\SWETeam\Echo\src\echo\Resources\Sounds" />
+      <recent name="C:\Users\Mark\Desktop\EchoIntegrated\src\echo\Resources" />
+      <recent name="C:\Users\Mark\Desktop\EchoIntegrated\src\echo" />
     </key>
   </component>
   <component name="RunManager" selected="Application.EchoApp (1)">
@@ -412,7 +415,7 @@
       <predefined_log_file id="idea.log" enabled="true" />
       <method />
     </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
@@ -422,7 +425,7 @@
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
       <option name="PREFERRED_AVD" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="DEBUGGER_TYPE" value="Java" />
@@ -430,11 +433,7 @@
       <option name="PREFERRED_AVD" value="" />
       <Java />
       <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
         <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -459,11 +458,7 @@
       <option name="PREFERRED_AVD" value="" />
       <Java />
       <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
         <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
       </Profilers>
       <method />
     </configuration>
@@ -518,6 +513,27 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -609,6 +625,34 @@
       <listeners />
       <method />
     </configuration>
+    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.EchoApp (1)" />
       <item index="1" class="java.lang.String" itemvalue="Application.WolframQuery" />
@@ -625,7 +669,7 @@
         <item index="4" class="java.lang.String" itemvalue="Application.WolframQuery" />
       </list>
     </recent_temporary>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
@@ -635,7 +679,7 @@
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
       <option name="PREFERRED_AVD" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="DEBUGGER_TYPE" value="Java" />
@@ -643,7 +687,11 @@
       <option name="PREFERRED_AVD" value="" />
       <Java />
       <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
         <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -713,46 +761,67 @@
       <option name="project" value="LOCAL" />
       <updated>1489576458505</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Everything works">
+      <created>1490182782538</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1490182782538</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Minor refactoring">
+      <created>1490183297511</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1490183297511</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Frozen gui, locked, and broken :)">
+      <created>1490187314062</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1490187314062</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="41039000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="896" extended-state="6" />
+    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29446936" sideWeight="0.45196003" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21098627" sideWeight="0.52847224" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43647236" sideWeight="0.5403536" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25468165" sideWeight="0.47152779" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28589264" sideWeight="0.49444443" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14499253" sideWeight="0.45964643" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11509716" sideWeight="0.49116063" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18472221" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23597233" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3982522" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39760837" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29837704" sideWeight="0.4576389" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -799,11 +868,14 @@
     <MESSAGE value="Added Javadocs for Listeners, and update Javadocs for WolframQuery" />
     <MESSAGE value="Added Javadoc for GUI" />
     <MESSAGE value="Added TextToSpeech file. Problems with playing wav" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added TextToSpeech file. Problems with playing wav" />
+    <MESSAGE value="Everything works" />
+    <MESSAGE value="Minor refactoring" />
+    <MESSAGE value="Frozen gui, locked, and broken :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Frozen gui, locked, and broken :)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -812,38 +884,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="915">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#Light#0;class#GUI#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/Sounds.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -853,9 +897,13 @@
     <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#processSpeechToText#0;class#Echo#0" expanded="false" />
+            <element signature="method#parseJsonFromMicrosoft#0;class#Echo#0" expanded="false" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -863,10 +911,19 @@
     <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="13" column="41" lean-forward="false" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#addListener#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#Light#0;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#initGUI#0;class#GUI#0" expanded="false" />
+            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
+            <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
+            <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -874,16 +931,20 @@
     <entry file="file://$PROJECT_DIR$/src/echo/EchoApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#processSpeechToText#0;class#Echo#0" expanded="false" />
+            <element signature="method#parseJsonFromMicrosoft#0;class#Echo#0" expanded="false" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -891,10 +952,19 @@
     <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
-          <caret line="13" column="41" lean-forward="false" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#addListener#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#Light#0;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#initGUI#0;class#GUI#0" expanded="false" />
+            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
+            <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
+            <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -902,16 +972,20 @@
     <entry file="file://$PROJECT_DIR$/src/echo/EchoApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
-          <caret line="14" column="10" lean-forward="false" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#processSpeechToText#0;class#Echo#0" expanded="false" />
+            <element signature="method#parseJsonFromMicrosoft#0;class#Echo#0" expanded="false" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -919,10 +993,19 @@
     <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#addListener#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#Light#0;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#initGUI#0;class#GUI#0" expanded="false" />
+            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
+            <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
+            <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -930,16 +1013,20 @@
     <entry file="file://$PROJECT_DIR$/src/echo/EchoApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="10" lean-forward="false" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#processSpeechToText#0;class#Echo#0" expanded="false" />
+            <element signature="method#parseJsonFromMicrosoft#0;class#Echo#0" expanded="false" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -947,10 +1034,19 @@
     <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#addListener#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#Light#0;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#initGUI#0;class#GUI#0" expanded="false" />
+            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
+            <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
+            <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -958,16 +1054,20 @@
     <entry file="file://$PROJECT_DIR$/src/echo/EchoApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="10" lean-forward="false" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#processSpeechToText#0;class#Echo#0" expanded="false" />
+            <element signature="method#parseJsonFromMicrosoft#0;class#Echo#0" expanded="false" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -975,10 +1075,19 @@
     <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#addListener#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#Light#0;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#initGUI#0;class#GUI#0" expanded="false" />
+            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
+            <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
+            <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -986,16 +1095,20 @@
     <entry file="file://$PROJECT_DIR$/src/echo/EchoApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#processSpeechToText#0;class#Echo#0" expanded="false" />
+            <element signature="method#parseJsonFromMicrosoft#0;class#Echo#0" expanded="false" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1003,10 +1116,19 @@
     <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#addListener#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#Light#0;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#initGUI#0;class#GUI#0" expanded="false" />
+            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
+            <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
+            <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1014,16 +1136,20 @@
     <entry file="file://$PROJECT_DIR$/src/echo/EchoApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#processSpeechToText#0;class#Echo#0" expanded="false" />
+            <element signature="method#parseJsonFromMicrosoft#0;class#Echo#0" expanded="false" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1031,10 +1157,19 @@
     <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#addListener#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#Light#0;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#initGUI#0;class#GUI#0" expanded="false" />
+            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
+            <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
+            <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1042,16 +1177,20 @@
     <entry file="file://$PROJECT_DIR$/src/echo/EchoApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#processSpeechToText#0;class#Echo#0" expanded="false" />
+            <element signature="method#parseJsonFromMicrosoft#0;class#Echo#0" expanded="false" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1059,10 +1198,19 @@
     <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#addListener#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#Light#0;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#initGUI#0;class#GUI#0" expanded="false" />
+            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
+            <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
+            <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1070,7 +1218,7 @@
     <entry file="file://$PROJECT_DIR$/src/echo/EchoApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1084,7 +1232,7 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="2" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -1096,7 +1244,7 @@
     <entry file="file://$PROJECT_DIR$/src/echo/Networking/HttpConnect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1105,20 +1253,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/echo/Computational/RecordSound.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="41" column="29" lean-forward="false" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/Computational/WolframQuery.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="49" column="47" lean-forward="false" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
+          <caret line="49" column="47" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
           <folding>
             <element signature="method#solve#0;class#WolframQuery#0" expanded="false" />
             <element signature="method#urlEncode#0;class#WolframQuery#0" expanded="false" />
@@ -1129,24 +1267,14 @@
     <entry file="file://$PROJECT_DIR$/src/echo/Computational/StartListeningListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="5" selection-end-column="3" />
-          <folding />
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="5" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/Computational/SoundDetectedListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="5" column="33" lean-forward="false" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/echo/Computational/Detective.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" column="15" lean-forward="false" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-          <folding />
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -1154,15 +1282,77 @@
     <entry file="file://$PROJECT_DIR$/src/echo/Computational/SpeechToText.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/echo/Computational/TextToSpeech.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/echo/Tests/ComputationalTests/TextToSpeechTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/echo/Tests/ComputationalTests/TextToSpeechTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="65" selection-start-line="14" selection-start-column="65" selection-end-line="14" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/echo/Computational/RecordSound.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="60" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="353">
+          <caret line="129" column="26" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#processSpeechToText#0;class#Echo#0" expanded="false" />
+            <element signature="method#parseJsonFromMicrosoft#0;class#Echo#0" expanded="false" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/echo/EchoApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+          <folding>
+            <element signature="e#325#326#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#395#396#0" expanded="true" />
+            <element signature="e#432#433#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/echo/Sounds.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="93" column="19" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1171,39 +1361,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        <state relative-caret-position="172">
+          <caret line="99" column="32" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#addListener#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="docComment;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#Light#0;class#Light#0;class#GUI#0" expanded="false" />
+            <element signature="method#initGUI#0;class#GUI#0" expanded="false" />
+            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
+            <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
+            <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
+            <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/echo/Sounds.java">
+    <entry file="file://$PROJECT_DIR$/src/echo/Computational/Detective.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="35" column="62" lean-forward="false" selection-start-line="35" selection-start-column="62" selection-end-line="35" selection-end-column="62" />
+        <state relative-caret-position="353">
+          <caret line="72" column="55" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/echo/EchoApp.java">
+    <entry file="file://$PROJECT_DIR$/src/echo/Computational/ThreadedButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/echo/Computational/TextToSpeech.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state relative-caret-position="413">
+          <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#668#669#0" expanded="true" />
+            <element signature="e#704#705#0" expanded="true" />
+            <element signature="docComment;class#PowerButton#0;class#ThreadedButton#0" expanded="false" />
           </folding>
         </state>
       </provider>

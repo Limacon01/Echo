@@ -1,6 +1,7 @@
 package echo;
 
 import echo.Computational.StartListeningListener;
+import echo.Computational.ThreadedButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,9 +24,9 @@ import static java.lang.Thread.sleep;
 public class GUI extends JFrame {
 
     private String status = "OFF";
-    private final PowerButton   power = new PowerButton();
-    private final Light         light = new Light();
-    private EchoApp EA;
+    private final PowerButton   power;
+    private final Light         light;
+    public EchoApp EA;
 
     private Sounds sound;
 
@@ -42,6 +43,7 @@ public class GUI extends JFrame {
      */
     private class PowerButton extends JButton {
         PowerButton() {
+            //Looks of button
             URL powerOFFLoc = this.getClass().getResource("/echo/Resources/Images/powerOFF.png");
             setIcon(new ImageIcon(powerOFFLoc));
             setBorder(null);
@@ -62,9 +64,13 @@ public class GUI extends JFrame {
     }
 
     public GUI(EchoApp EA) {
-        initGUI();
+        power = new PowerButton();
         addPowerListener();
+        light = new Light();
         this.EA = EA;
+
+        initGUI();
+
     }
 
     private void initGUI(){
@@ -92,10 +98,14 @@ public class GUI extends JFrame {
        */
     private void addPowerListener(){
         power.addActionListener(ev -> {
-            System.out.println("--" + ev.getActionCommand() + "-- ");
             switch (status) {
                 /* Turning echo from off to on */
                 case "OFF":
+
+                    //This is a kill switch
+                    ThreadedButton tb = new ThreadedButton(this);
+                    tb.run();
+
                     setListen();
                     break;
                 /* Turning echo from on to off */
