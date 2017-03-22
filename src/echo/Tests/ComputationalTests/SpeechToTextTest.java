@@ -5,11 +5,16 @@ import org.junit.Test;
 
 import java.net.URL;
 
-import static org.junit.Assert.*;
-
 /**
- * Created by Mark on 09/03/2017.
+ * Test SpeechToText Class.
+ *
+ * Tests that renewAccessToken() takes a key and renews the access token
+ * If renewAccessToken fails, token will equal null
+ *
+ * Tests that recognizeSpeech() will recognise "Test 123" which we have pre-recorded
+ * and we find it in the jsonText
  */
+
 public class SpeechToTextTest {
     @Test
     public void renewAccessToken() throws Exception {
@@ -23,7 +28,7 @@ public class SpeechToTextTest {
         //{"version":"3.0","header":{"status":"success","scenario":"smd","name":"Test 123.","lexical":"test one two three","properties":{"requestid":"d1a1c9d4-d503-42f2-9a3f-50e12ba7fc43","HIGHCONF":"1"}},"results":[{"scenario":"smd","name":"Test 123.","lexical":"test one two three","confidence":"0.9431151","properties":{"HIGHCONF":"1"}}]}
         final String ExampleOutput = "{\"version\":\"3.0\",\"header\":{\"status\":\"success\",\"scenario\":\"smd\",\"name\":\"Test 123.\",\"lexical\":\"test one two three\",\"properties\":{\"requestid\":\"d1a1c9d4-d503-42f2-9a3f-50e12ba7fc43\",\"HIGHCONF\":\"1\"}},\"results\":[{\"scenario\":\"smd\",\"name\":\"Test 123.\",\"lexical\":\"test one two three\",\"confidence\":\"0.9431151\",\"properties\":{\"HIGHCONF\":\"1\"}}]}";
         final String  KEY1       = "1ac04cd4347b49a2b89052edf1a45ef0";
-        URL testFile = this.getClass().getResource("/echo/Tests/Test.wav");
+        URL testFile = this.getClass().getResource("/echo/Tests/Test");
 
         String token  = SpeechToText.renewAccessToken( KEY1 );
         byte[] speech = SpeechToText.readData( testFile.getPath() );
