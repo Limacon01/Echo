@@ -60,7 +60,6 @@ public class Detective implements Runnable {
             //Analyse samples
             for (float sample : samples) {
                 float absSample = Math.abs(sample);
-                System.out.println(absSample);
                 if (absSample > SAMPLE_THRESHOLD) {
                     dataLine.close();
                     System.out.println("Sound detected in Detecive class");

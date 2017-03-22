@@ -16,6 +16,8 @@ import java.net.URL;
  */
 public class GUI extends JFrame {
     private String status = "OFF";
+    private boolean firstTime = true;
+
     private final PowerButton   power;
     private final Light         light;
 
@@ -27,8 +29,6 @@ public class GUI extends JFrame {
         addPowerListener();
         light = new Light();
         initGUI();
-
-        backgroundWorker = new BackgroundWorker(this);
     }
 
     private void initGUI(){
@@ -56,17 +56,20 @@ public class GUI extends JFrame {
    */
     private void addPowerListener(){
         power.addActionListener(ev -> {
+            //we need to find a way to turn this off
             switch (status) {
                 /* Turning echo from off to on */
                 case "OFF":
+                    setFirstTime();
+
+                    //Updates the gui... plays the sounds...
                     setListen();
-                    backgroundWorker.execute();
                     break;
                 /* Turning echo from on to off */
                 case "LISTEN":
-                    setOff();
                     backgroundWorker.cancel();
-                    backgroundWorker = new BackgroundWorker(this);
+
+                    setOff();
                     break;
                 /* Power button disabled while in answer mode */
                 case "ANSWER":
@@ -88,24 +91,37 @@ public class GUI extends JFrame {
         power.setIcon(new ImageIcon(powerONLoc));
         power.revalidate();
     }
+
     void setOff(){
         power.setEnabled(true);
         setStatus("OFF");
         sound = new Sounds("OFF", this);
         sound.run();
-
     }
 
-    void setListen(){
+    public void setListen(){
         //This updates the gui...
         setStatus("LISTEN");
 
-        //Runs threaded sound
-        sound = new Sounds("ON", this);
-        sound.run();
+        if(firstTime) {
+            //Runs threaded sound
+            sound = new Sounds("ON", this);
+            sound.run();
+            int secondstoWait = 1;
+            try {
+                Thread.sleep(secondstoWait * 1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            firstTime = false;
+        }
+
+        backgroundWorker = new BackgroundWorker(this);
+        backgroundWorker.execute();
+        System.out.println("CREATED A BACKGROUND WORKER");
     }
 
-    void setAnswer(){
+    public void setAnswer(){
         setStatus("ANSWER");
     }
 
@@ -126,6 +142,10 @@ public class GUI extends JFrame {
 
     public String checkStatus(){
         return status;
+    }
+
+    public void setFirstTime(){
+        this.firstTime = true;
     }
 
     /**
