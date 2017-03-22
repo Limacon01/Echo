@@ -6,13 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="785ffe9f-61f4-453f-a5ce-a744e89cbf3d" name="Default" comment="Frozen gui, locked, and broken :)">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/query.wav" afterPath="$PROJECT_DIR$/query.wav" />
+    <list default="true" id="785ffe9f-61f4-453f-a5ce-a744e89cbf3d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/echo/Computational/BackgroundWorker.java" afterPath="$PROJECT_DIR$/src/echo/Computational/BackgroundWorker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/echo/Computational/Detective.java" afterPath="$PROJECT_DIR$/src/echo/Computational/Detective.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/echo/Echo.java" afterPath="$PROJECT_DIR$/src/echo/Echo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/echo/GUI.java" afterPath="$PROJECT_DIR$/src/echo/GUI.java" />
     </list>
     <ignored path="EchoIntegrated.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -712,7 +707,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490221025862</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="GUI no longer frozen, however button is not interrupting the background thread.">
+      <created>1490224508244</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1490224508244</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -720,7 +722,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -806,7 +808,8 @@
     <MESSAGE value="Minor refactoring" />
     <MESSAGE value="Frozen gui, locked, and broken :)" />
     <MESSAGE value="Fixed gui, however need to make it go back in to listen mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed gui, however need to make it go back in to listen mode" />
+    <MESSAGE value="GUI no longer frozen, however button is not interrupting the background thread." />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI no longer frozen, however button is not interrupting the background thread." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
