@@ -38,6 +38,7 @@ public class Sounds implements Runnable {
 
     /**
      * @param status    the status of the Echo which determines which sound file is to be used
+     * @param gui  The gui that the Sounds object is run from
      */
     public Sounds(String status, GUI gui){
         this.gui = gui;
