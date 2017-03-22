@@ -11,7 +11,7 @@ import static java.lang.Thread.sleep;
 /**
  * Main controller for the Echo device
  */
-public class Echo implements SoundDetectedListener, StartListeningListener {
+public class Echo {
     private static final String  FILENAME   = "query.wav";
     private static final String  INPUT      = "./query.wav";
     private static final String  KEY1       = "1ac04cd4347b49a2b89052edf1a45ef0";
@@ -20,17 +20,9 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
     private static final float   CONFIDENCE_THREASHOLD =  0.4f;
 
     private GUI gui;
-    private Detective detective;
-    private TextToSpeech t2s = new TextToSpeech();
-    private WolframQuery wq = new WolframQuery();
 
-
-    Echo(EchoApp EA){
-        gui = new GUI(EA);
-        gui.addListener(this);
-
-        detective = new Detective();
-        detective.addListener(this);
+    Echo(){
+        gui = new GUI();
     }
 
     String processSpeechToText(){
@@ -70,65 +62,6 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
             }
         }
         return "";
-    }
-
-    /**
-     * Once a device is ready to start listening
-     * This starts detective, which listens for a sound
-     * over a specific threshold
-     */
-    @Override
-    public void startListening() {
-        detective.run();
-    }
-
-    /**
-     * Once a sound is detected, record sound for 5s
-     * and process it
-     */
-    @Override
-    public void soundDetected() {
-        //Record sound for 5s
-        System.out.println("Sound detected");
-        AudioInputStream ais = RecordSound.setupStream();
-        RecordSound.recordSound(FILENAME, RecordSound.readStream(ais));
-        RecordSound.closeDataLine();
-
-        gui.setAnswer();
-
-        //Once the gui has been updated
-        SwingUtilities.invokeLater(() -> {
-            //Currently returning as json
-            String toSendToWolfram = processSpeechToText();
-            File outputFile;
-            if (toSendToWolfram.equals("")) {
-                //Create appropriate file
-                outputFile = t2s.outputSpeechToFile(ERROR_SEND);
-                System.out.println("attempting to play error message");
-            } else {
-                //Send to wolfram
-                String result = wq.processQuestion(toSendToWolfram);
-
-                //Create appropriate file
-                outputFile = t2s.outputSpeechToFile(result);
-            }
-
-            //Play text-to-speech
-            Sounds s = new Sounds(outputFile);
-            double lengthOfFileSeconds = s.getLengthOfFile(outputFile) + 2;
-            System.out.println(lengthOfFileSeconds);
-            s.run();
-
-            //Disable the GUI for X seconds
-            try { sleep((long) lengthOfFileSeconds * 1000);
-            } catch (InterruptedException e) { e.printStackTrace();}
-
-            if(gui.hasBeenClicked()){
-                gui.setOff();
-
-            }
-            gui.setListen();
-        });
     }
 }
 

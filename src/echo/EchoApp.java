@@ -5,19 +5,7 @@ package echo;
  */
 public class EchoApp{
     //TODO stop the button working when it is in answer mode
-
-    //TODO testing
-    //TODO more javadoc
     public static void main(String[] argc){
-        EchoApp EA = new EchoApp();
-        EA.createEcho();
-    }
-
-    public Echo createEcho() {
-        return new Echo(this);
-    }
-
-    public Echo restartEcho() {
-        return new Echo(this);
+        Echo echo = new Echo();
     }
 }
