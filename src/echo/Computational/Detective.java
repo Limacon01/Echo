@@ -58,13 +58,22 @@ public class Detective implements Runnable {
             for (int readByte; (readByte = dataLine.read(buffer, 0, buffer.length)) > -1; ) {
 
                 // convert readBytes into samples:
+                // convert readBytes into samples:
+                // convert readBytes into samples:
                 samples = convertBytesToSample(readByte, buffer, samples);
 
                 //Analyse samples
                 for (float sample : samples) {
                     float absSample = Math.abs(sample);
                     if (absSample > SAMPLE_THRESHOLD) {
-                        notifyListeners(dataLine);
+
+                        for (SoundDetectedListener sdl : soundDetectedListeners) {
+
+                            dataLine.close();
+                            sdl.soundDetected();
+                            System.out.println("Sound detected");
+                            return;
+                        }
                     }
                 }
             }
@@ -88,15 +97,5 @@ public class Detective implements Runnable {
             samples[s++] = sample;/// 32768f;
         }
         return samples;
-    }
-
-    void notifyListeners(DataLine dataLine) {
-        for (SoundDetectedListener sdl : soundDetectedListeners) {
-            dataLine.close();
-            sdl.soundDetected();
-            System.out.println("Sound detected");
-            return;
-        }
-        return;
     }
 }

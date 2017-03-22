@@ -18,7 +18,6 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
     private static final String  ERROR_SEND = "I'm sorry, I could not process the voice command";
     private static final String  ERROR_RETRY= "I'm sorry, I could not understand that - please repeat";
     private static final float   CONFIDENCE_THREASHOLD =  0.4f;
-    private static boolean setListen = true;
 
     private GUI gui;
     private Detective detective;
@@ -89,30 +88,19 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
      */
     @Override
     public void soundDetected() {
-        //Check if the user wants to stop
-        if (gui.checkStatus().equals("OFF")){
-            setListen = false;
-        }
-
         //Record sound for 5s
         System.out.println("Sound detected");
         AudioInputStream ais = RecordSound.setupStream();
         RecordSound.recordSound(FILENAME, RecordSound.readStream(ais));
         RecordSound.closeDataLine();
 
-        //Check if the user wants to stop
-        if (gui.checkStatus().equals("OFF")){
-            setListen = false;
-        }
-
         gui.setAnswer();
 
         //Once the gui has been updated
         SwingUtilities.invokeLater(() -> {
+            System.out.println("Invoking later");
             //Currently returning as json
             String toSendToWolfram = processSpeechToText();
-
-
             File outputFile;
             if (toSendToWolfram.equals("")) {
                 //Create appropriate file
@@ -133,22 +121,10 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
             s.run();
 
             //Disable the GUI for X seconds
-            try {
-                sleep((long) lengthOfFileSeconds * 1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            //Wait until sound has stopped playing... then reset gui
-            if(setListen) {
-                gui.setListen();
-            }else{
-                gui.setOff();
-            }
+            try { sleep((long) lengthOfFileSeconds * 1000);
+            } catch (InterruptedException e) { e.printStackTrace();}
+            gui.setListen();
         });
     }
-
-
-
 }
 
