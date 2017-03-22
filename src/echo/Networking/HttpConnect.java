@@ -56,7 +56,7 @@ public class HttpConnect {
         int n = dis.read( buffer );
         if ( n > 0 ) {
           bos.write( buffer, 0, n );
-        } else { 
+        } else {
           break;
         }
       }
