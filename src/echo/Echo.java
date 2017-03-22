@@ -25,8 +25,8 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
     private WolframQuery wq = new WolframQuery();
 
 
-    Echo(){
-        gui = new GUI();
+    Echo(EchoApp EA){
+        gui = new GUI(EA);
         gui.addListener(this);
 
         detective = new Detective();
@@ -98,7 +98,6 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
 
         //Once the gui has been updated
         SwingUtilities.invokeLater(() -> {
-            System.out.println("Invoking later");
             //Currently returning as json
             String toSendToWolfram = processSpeechToText();
             File outputFile;
@@ -123,6 +122,11 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
             //Disable the GUI for X seconds
             try { sleep((long) lengthOfFileSeconds * 1000);
             } catch (InterruptedException e) { e.printStackTrace();}
+
+            if(gui.hasBeenClicked()){
+                gui.setOff();
+
+            }
             gui.setListen();
         });
     }
