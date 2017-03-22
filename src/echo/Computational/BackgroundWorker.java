@@ -1,5 +1,6 @@
 package echo.Computational;
 
+import echo.Echo;
 import echo.GUI;
 import echo.Sounds;
 
@@ -17,14 +18,23 @@ import static java.lang.Thread.sleep;
 //First: int when finished working...
 //Second: status of work
 public class BackgroundWorker extends SwingWorker<Integer, String> {
-    GUI updatedGUI;
+    private static final String  ERROR_SEND = "I'm sorry, I could not process the voice command";
+    private static final String  ERROR_RETRY= "I'm sorry, I could not understand that - please repeat";
+    private static final String  FILENAME   = "query.wav";
+    private static final String  INPUT      = "./query.wav";
+    private static final String  KEY1       = "1ac04cd4347b49a2b89052edf1a45ef0";;
 
+    private GUI       updatedGUI;
     private Detective sherlock;
+    private TextToSpeech t2s;
+    private WolframQuery wq = new WolframQuery();
 
     public BackgroundWorker(GUI gui){
         this.updatedGUI = gui;
-    }
 
+        t2s = new TextToSpeech();
+        wq = new WolframQuery();
+    }
 
     @Override
     protected Integer doInBackground() throws Exception {
@@ -37,66 +47,37 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
 
         //Detect when detective is back
         t1.join();
-
         publish("Sound detected");
-
         failIfInterrupted();
 
-        publish("honk");
+        //Record the sound
+        AudioInputStream ais = RecordSound.setupStream();
+        RecordSound.recordSound(FILENAME, RecordSound.readStream(ais));
+        RecordSound.closeDataLine();
+        publish("Sound Successfully recorded");
         failIfInterrupted();
 
-        int seconds = 4;
-        sleep(seconds*1000);
+        publish("AnswerMode");
 
-        publish("done with sleeping - NAP OVER BITCHES");
-
-        //Record sound
         //ProcessSpeechToText
-        //ProcessQuestion
-        //Output speechToFile
+        String toSendToWolfram = processSpeechToText();
+        File outputFile;
+        if (toSendToWolfram.equals("")) {
+            //Create appropriate file
+            outputFile = t2s.outputSpeechToFile(ERROR_SEND);
+            System.out.println("attempting to play error message");
+        } else {
+            //Send to wolfram
+            String result = wq.processQuestion(toSendToWolfram);
 
-//        //Record sound for 5s
-//        System.out.println("Sound detected");
-//        AudioInputStream ais = RecordSound.setupStream();
-//        RecordSound.recordSound(FILENAME, RecordSound.readStream(ais));
-//        RecordSound.closeDataLine();
-//
-//        gui.setAnswer();
-//
-//        //Once the gui has been updated
-//        SwingUtilities.invokeLater(() -> {
-//            //Currently returning as json
-//            String toSendToWolfram = processSpeechToText();
-//            File outputFile;
-//            if (toSendToWolfram.equals("")) {
-//                //Create appropriate file
-//                outputFile = t2s.outputSpeechToFile(ERROR_SEND);
-//                System.out.println("attempting to play error message");
-//            } else {
-//                //Send to wolfram
-//                String result = wq.processQuestion(toSendToWolfram);
-//
-//                //Create appropriate file
-//                outputFile = t2s.outputSpeechToFile(result);
-//            }
-//
-//            //Play text-to-speech
-//            Sounds s = new Sounds(outputFile);
-//            double lengthOfFileSeconds = s.getLengthOfFile(outputFile) + 2;
-//            System.out.println(lengthOfFileSeconds);
-//            s.run();
-//
-//            //Disable the GUI for X seconds
-//            try { sleep((long) lengthOfFileSeconds * 1000);
-//            } catch (InterruptedException e) { e.printStackTrace();}
-//
-//            if(gui.hasBeenClicked()){
-//                gui.setOff();
-//
-//            }
-//            gui.setListen();
-//        });
+            //Create appropriate file
+            outputFile = t2s.outputSpeechToFile(result);
+        }
 
+        //Play text-to-speech
+        Sounds s = new Sounds(outputFile);
+        double lengthOfFileSeconds = s.getLengthOfFile(outputFile) + 2;
+        s.run();
         return null;
     }
 
@@ -116,6 +97,13 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
 
     public void cancel(){
         this.cancel(true);
-        System.out.println("Hopefully this doesnt explode");
+        System.out.println("Quit listening mode - byebye!");
+    }
+
+    String processSpeechToText(){
+        final String token  = SpeechToText.renewAccessToken( KEY1 );
+        final byte[] speech = SpeechToText.readData( INPUT );
+        final String jsonText   = SpeechToText.recognizeSpeech( token, speech );
+        return Echo.parseJsonFromMicrosoft(jsonText);
     }
 }

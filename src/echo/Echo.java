@@ -1,35 +1,15 @@
 package echo;
 
-import echo.Computational.*;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.swing.*;
-import java.io.File;
-
-import static java.lang.Thread.sleep;
-
 /**
  * Main controller for the Echo device
  */
 public class Echo {
-    private static final String  FILENAME   = "query.wav";
-    private static final String  INPUT      = "./query.wav";
-    private static final String  KEY1       = "1ac04cd4347b49a2b89052edf1a45ef0";
-    private static final String  ERROR_SEND = "I'm sorry, I could not process the voice command";
-    private static final String  ERROR_RETRY= "I'm sorry, I could not understand that - please repeat";
     private static final float   CONFIDENCE_THREASHOLD =  0.4f;
 
     private GUI gui;
 
     Echo(){
         gui = new GUI();
-    }
-
-    String processSpeechToText(){
-        final String token  = SpeechToText.renewAccessToken( KEY1 );
-        final byte[] speech = SpeechToText.readData( INPUT );
-        final String jsonText   = SpeechToText.recognizeSpeech( token, speech );
-        return parseJsonFromMicrosoft(jsonText);
     }
 
     /**
@@ -39,7 +19,7 @@ public class Echo {
      * @param json  input string
      * @return
      */
-    String parseJsonFromMicrosoft(String json){
+    public static String parseJsonFromMicrosoft(String json){
         String succStr = "\"status\":\"success\"";
         int status = json.indexOf(succStr);
 

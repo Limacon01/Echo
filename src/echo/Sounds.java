@@ -59,7 +59,7 @@ public class Sounds implements Runnable {
      * @param file
      * @return
      */
-    double getLengthOfFile(File file){
+    public double getLengthOfFile(File file){
         AudioInputStream audioInputStream = null;
         try {
             audioInputStream = AudioSystem.getAudioInputStream(file);
