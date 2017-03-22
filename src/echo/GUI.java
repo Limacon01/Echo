@@ -129,7 +129,11 @@ public class GUI extends JFrame {
         sound.run();
 
         //Once sound has finished playing, and the gui has been updated... startListening for sound
-        SwingUtilities.invokeLater(() -> startListeningListeners.forEach(StartListeningListener::startListening));
+        SwingUtilities.invokeLater(() -> {
+            try{ sleep(timeToWaitSeconds*1000);}
+            catch(Exception e){e.printStackTrace();}
+            startListeningListeners.forEach(StartListeningListener::startListening);
+        });
     }
 
     void setAnswer(){
