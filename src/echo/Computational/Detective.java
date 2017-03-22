@@ -1,9 +1,6 @@
 package echo.Computational;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.TargetDataLine;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +26,9 @@ public class Detective implements Runnable {
     }
 
     @Override
+    /**
+     * if we have a listener in in our list, we open a target data line
+     */
     public void run() {
         if (!soundDetectedListeners.isEmpty()) {
             AudioFormat af =
@@ -58,29 +58,45 @@ public class Detective implements Runnable {
             for (int readByte; (readByte = dataLine.read(buffer, 0, buffer.length)) > -1; ) {
 
                 // convert readBytes into samples:
-                for (int i = 0, s = 0; i < readByte; ) {
-                    int sample = 0;
-                    //TODO change order if changed to big endian / using same method as recordSounds
-                    sample |= buffer[i++] & 0xFF;
-                    sample |= buffer[i++] << 8;
-
-                    // normalize to a range of +/-1.0f
-                    samples[s++] = sample;/// 32768f;
-                }
+                samples = convertBytesToSample(readByte, buffer, samples);
 
                 //Analyse samples
                 for (float sample : samples) {
                     float absSample = Math.abs(sample);
                     if (absSample > SAMPLE_THRESHOLD) {
-                        for (SoundDetectedListener sdl : soundDetectedListeners) {
-                            dataLine.close();
-                            sdl.soundDetected();
-                            System.out.println("Sound detected");
-                            return;
-                        }
+                        notifyListeners(dataLine);
                     }
                 }
             }
         }
+    }
+
+    /**
+     * @param readByte
+     * @param buffer
+     * @param samples
+     * @return
+     */
+    float[] convertBytesToSample(int readByte, byte[] buffer, float[] samples) {
+        for (int i = 0, s = 0; i < readByte; ) {
+            int sample = 0;
+            //TODO change order if changed to big endian / using same method as recordSounds
+            sample |= buffer[i++] & 0xFF;
+            sample |= buffer[i++] << 8;
+
+            // normalize to a range of +/-1.0f
+            samples[s++] = sample;/// 32768f;
+        }
+        return samples;
+    }
+
+    void notifyListeners(DataLine dataLine) {
+        for (SoundDetectedListener sdl : soundDetectedListeners) {
+            dataLine.close();
+            sdl.soundDetected();
+            System.out.println("Sound detected");
+            return;
+        }
+        return;
     }
 }
