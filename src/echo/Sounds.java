@@ -1,10 +1,8 @@
 package echo;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.sound.sampled.*;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 /**
@@ -12,13 +10,12 @@ import java.net.URL;
  * when the Echo is turned on or off, or when there is an
  * error in picking up audio.
  *
- * @author Alex and Mark
  * @version 1.0
  */
 public class Sounds implements Runnable {
-    private URL     soundRes;
-    private File    desiredFile;
-    private GUI     gui;
+    public URL     soundRes;
+    public File    desiredFile;
+    public AudioInputStream as;
 
     /**
      * @param file  The input file that will be run in the .run() method
@@ -28,20 +25,9 @@ public class Sounds implements Runnable {
     }
 
     /**
-     * @param file The input file that will be run in the .run() method
-     * @param gui  The gui that the Sounds object is run from
-     */
-    public Sounds(File file, GUI gui){
-        this.gui = gui;
-        desiredFile = file;
-    }
-
-    /**
      * @param status    the status of the Echo which determines which sound file is to be used
-     * @param gui  The gui that the Sounds object is run from
      */
-    public Sounds(String status, GUI gui){
-        this.gui = gui;
+    public Sounds(String status){
         switch (status) {
             case "ON":
                 soundRes = this.getClass().getResource("/echo/Resources/Sounds/onSound.wav");
@@ -59,7 +45,7 @@ public class Sounds implements Runnable {
      * @param file
      * @return
      */
-    double getLengthOfFile(File file){
+    public static double getLengthOfFile(File file){
         AudioInputStream audioInputStream = null;
         try {
             audioInputStream = AudioSystem.getAudioInputStream(file);
@@ -69,8 +55,23 @@ public class Sounds implements Runnable {
         AudioFormat format = audioInputStream.getFormat();
         long frames = audioInputStream.getFrameLength();
         double duration = (frames+0.0) / format.getFrameRate();
-        return duration;
+        return duration;   //in seconds
     }
+
+    /**
+     * This method assigns a file to an AudioInputStream
+     */
+    public void assignAudioInputStream() throws IOException, UnsupportedAudioFileException {
+        if(soundRes != null) {
+            as = AudioSystem.getAudioInputStream(soundRes);
+            soundRes = null;
+        }else if(desiredFile != null){
+            as = AudioSystem.getAudioInputStream(desiredFile);
+        }else{
+            System.out.println("Could not find input file");
+        }
+    }
+
 
     /**
      * This run method will play the selected wav file
@@ -80,16 +81,7 @@ public class Sounds implements Runnable {
         try {
             System.out.println("Sound running");
             Clip clip = AudioSystem.getClip();
-            AudioInputStream as;
-            if(soundRes != null) {
-                as = AudioSystem.getAudioInputStream(soundRes);
-                soundRes = null;
-            }else if(desiredFile != null){
-                as = AudioSystem.getAudioInputStream(desiredFile);
-            }else{
-                System.out.println("Could not find input file");
-                return;
-            }
+            assignAudioInputStream();
             clip.open(as);
             clip.start();
         } catch(Exception e){

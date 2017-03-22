@@ -25,7 +25,7 @@ public class Echo implements SoundDetectedListener, StartListeningListener {
     private WolframQuery wq = new WolframQuery();
 
 
-    Echo(EchoApp EA){
+    public Echo(EchoApp EA){
         gui = new GUI(EA);
         gui.addListener(this);
 

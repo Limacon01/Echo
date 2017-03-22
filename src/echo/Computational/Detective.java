@@ -14,7 +14,8 @@ public class Detective implements Runnable {
     private static final int    SAMPLE_CHANNELS = 1;     /* mono */
     private static final float  SAMPLE_THRESHOLD = 30000f;
 
-    private List<SoundDetectedListener> soundDetectedListeners = new ArrayList<>();
+    //made public for testing
+    public List<SoundDetectedListener> soundDetectedListeners = new ArrayList<>();
 
     /**
      * adds listeners to a list
