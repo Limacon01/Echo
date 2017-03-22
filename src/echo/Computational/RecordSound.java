@@ -12,7 +12,6 @@ public class RecordSound {
     private static final int     SAMPLE_RATE     = 32000;  /* MHz  */
     private static final int     SAMPLE_SIZE     = 16;     /* bits */
     private static final int     SAMPLE_CHANNELS = 1;      /* mono */
-    private static boolean       recording = true;
     static TargetDataLine line;
 
     /*
@@ -60,15 +59,14 @@ public class RecordSound {
             byte buffer[]   = new byte[ bufferSize ];
 
             for ( int counter = TIMER; counter > 0; counter-- ) {
-                if(recording) {
-                    int n = stm.read(buffer, 0, buffer.length);
-                    System.out.println("Listening...");
-                    if (n > 0) {
-                        bos.write(buffer, 0, n);
-                    } else {
-                        break;
-                    }
+                int n = stm.read(buffer, 0, buffer.length);
+                System.out.println("Listening...");
+                if (n > 0) {
+                    bos.write(buffer, 0, n);
+                } else {
+                    break;
                 }
+
             }
 
             return bos;

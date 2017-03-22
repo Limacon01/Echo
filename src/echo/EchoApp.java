@@ -9,6 +9,15 @@ public class EchoApp{
     //TODO testing
     //TODO more javadoc
     public static void main(String[] argc){
-        Echo echo = new Echo();
+        EchoApp EA = new EchoApp();
+        EA.createEcho();
+    }
+
+    public Echo createEcho() {
+        return new Echo(this);
+    }
+
+    public Echo restartEcho() {
+        return new Echo(this);
     }
 }

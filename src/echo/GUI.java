@@ -3,6 +3,8 @@ package echo;
 import echo.Computational.StartListeningListener;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ public class GUI extends JFrame {
     private String status = "OFF";
     private final PowerButton   power = new PowerButton();
     private final Light         light = new Light();
+    private EchoApp EA;
 
     private Sounds sound;
 
@@ -58,9 +61,10 @@ public class GUI extends JFrame {
         }
     }
 
-    public GUI() {
+    public GUI(EchoApp EA) {
         initGUI();
         addPowerListener();
+        this.EA = EA;
     }
 
     private void initGUI(){
@@ -88,6 +92,7 @@ public class GUI extends JFrame {
        */
     private void addPowerListener(){
         power.addActionListener(ev -> {
+            System.out.println("--" + ev.getActionCommand() + "-- ");
             switch (status) {
                 /* Turning echo from off to on */
                 case "OFF":
@@ -118,23 +123,34 @@ public class GUI extends JFrame {
         power.revalidate();
     }
 
+    boolean hasBeenClicked(){
+        return false;
+    }
+
     void setOff(){
         power.setEnabled(true);
         setStatus("OFF");
         sound = new Sounds("OFF", this);
         sound.run();
+
     }
 
     void setListen(){
+        //This updates the gui...
         setStatus("LISTEN");
+
+        //Runs threaded sound
         sound = new Sounds("ON", this);
         sound.run();
 
-        int timeToWaitSeconds = 1;
-        //Once sound has finished playing, and the gui has been updated... startListening for sound
+        //Pause the gui for 2 seconds
+        int timeToWaitSeconds = 2;
+
         SwingUtilities.invokeLater(() -> {
-            //try{ sleep(timeToWaitSeconds*1000);}
-            //catch(Exception e){e.printStackTrace();}
+            try{ sleep(timeToWaitSeconds*1000);}
+            catch(Exception e){e.printStackTrace();}
+
+            //Background thread checking for clicks?
             startListeningListeners.forEach(StartListeningListener::startListening);
         });
     }
