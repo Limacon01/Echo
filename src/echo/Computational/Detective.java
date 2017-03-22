@@ -58,13 +58,28 @@ public class Detective implements Runnable {
             for (int readByte; (readByte = dataLine.read(buffer, 0, buffer.length)) > -1; ) {
 
                 // convert readBytes into samples:
-                samples = convertBytesToSample(readByte, buffer, samples);
+// convert readBytes into samples:		                  // convert readBytes into samples:
+                for (int i = 0, s = 0; i < readByte; ) {
+                    int sample = 0;
+                    //TODO change order if changed to big endian / using same method as recordSounds
+                    sample |= buffer[i++] & 0xFF;
+                    sample |= buffer[i++] << 8;
+
+                    // normalize to a range of +/-1.0f
+                    samples[s++] = sample;/// 32768f;
+                }
 
                 //Analyse samples
                 for (float sample : samples) {
                     float absSample = Math.abs(sample);
                     if (absSample > SAMPLE_THRESHOLD) {
-                        notifyListeners(dataLine);
+                        for (SoundDetectedListener sdl : soundDetectedListeners) {
+
+                            dataLine.close();
+                            sdl.soundDetected();
+                            System.out.println("Sound detected");
+                            return;
+                        }
                     }
                 }
             }

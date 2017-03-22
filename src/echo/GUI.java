@@ -7,6 +7,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Initiates GUI for an Echo in Off mode
  * Toggle button for power
@@ -128,10 +130,11 @@ public class GUI extends JFrame {
         sound = new Sounds("ON", this);
         sound.run();
 
+        int timeToWaitSeconds = 1;
         //Once sound has finished playing, and the gui has been updated... startListening for sound
         SwingUtilities.invokeLater(() -> {
-            try{ sleep(timeToWaitSeconds*1000);}
-            catch(Exception e){e.printStackTrace();}
+            //try{ sleep(timeToWaitSeconds*1000);}
+            //catch(Exception e){e.printStackTrace();}
             startListeningListeners.forEach(StartListeningListener::startListening);
         });
     }
