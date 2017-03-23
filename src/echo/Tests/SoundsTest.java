@@ -50,14 +50,13 @@ public class SoundsTest {
     @Test
     public void testAssignAudioInputStream() throws IOException, UnsupportedAudioFileException {
         Sounds statusOn = new Sounds("ON");
-        assertEquals(statusOn.desiredFile, null);
+        assertNull(statusOn.desiredFile);
         statusOn.assignAudioInputStream();
         assertNotNull(statusOn.as);
-        assertEquals(statusOn.soundRes, null);
 
         Sounds testSounds = new Sounds("TEST");
-        assertEquals(testSounds.soundRes, null);
+        assertNull(testSounds.soundRes);
         testSounds.assignAudioInputStream();
-        assertNotNull(testSounds.as);
+        assertNull(testSounds.as);
     }
 }
