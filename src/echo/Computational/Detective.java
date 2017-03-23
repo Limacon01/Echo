@@ -5,68 +5,92 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @version 1.1
+ * @version 2.0
  * Detects when sounds surpasses a certain threshold and alerts listeners
  */
 public class Detective implements Runnable {
-    private static final float  SAMPLE_RATE = 44100f;    /* MHz  */
-    private static final int    SAMPLE_SIZE = 16;        /* bits */
-    private static final int    SAMPLE_CHANNELS = 1;     /* mono */
-    private static final float  SAMPLE_THRESHOLD = 30000f;
+    // Variables are public for testing purposes:
+    public static final float  SAMPLE_RATE = 44100f;    /* MHz  */
+    public static final int    SAMPLE_SIZE = 16;        /* bits */
+    public static final int    SAMPLE_CHANNELS = 1;     /* mono */
+    public static final float  SAMPLE_THRESHOLD = 30000f;
+    TargetDataLine dataLine;
+    byte[] buffer;
 
     @Override
-    /**
-     * if we have a listener in in our list, we open a target data line
-     */
     public void run() {
-
-        AudioFormat af =
-                new AudioFormat(SAMPLE_RATE
-                        , SAMPLE_SIZE
-                        , SAMPLE_CHANNELS
-                        , true /* signed */
-                        , false /* big-endian */
-                );
         final int bufferSize = 2048;
-
-        TargetDataLine dataLine;
-        try {
-            dataLine = AudioSystem.getTargetDataLine(af);
-            dataLine.open(af, bufferSize);
-        } catch (LineUnavailableException e) {
-            System.out.println("Couldn't open Target Data Line");
-            e.printStackTrace();
-            return;
-        }
-
-        byte[] buffer = new byte[bufferSize];
+        AudioFormat af = createAudioFormat();
+        dataLine = createDataLine(bufferSize, af);
+        buffer = new byte[bufferSize];
         float[] samples = new float[bufferSize / 2];
 
-        ///TODO We could put in an 'averager' later
         dataLine.start();
         for (int readByte; (readByte = dataLine.read(buffer, 0, buffer.length)) > -1; ) {
-
-            // convert readBytes into samples:
-            for (int i = 0, s = 0; i < readByte; ) {
-                int sample = 0;
-                //TODO change order if changed to big endian / using same method as recordSounds
-                sample |= buffer[i++] & 0xFF;
-                sample |= buffer[i++] << 8;
-
-                // normalize to a range of +/-1.0f
-                samples[s++] = sample;/// 32768f;
-            }
+            samples = convertBytesToSamples(readByte, samples);
 
             //Analyse samples
             for (float sample : samples) {
                 float absSample = Math.abs(sample);
+
                 if (absSample > SAMPLE_THRESHOLD) {
+                    System.out.println("Sound detected");
                     dataLine.close();
-                    System.out.println("Sound detected in Detecive class");
                     return;
                 }
             }
         }
     }
-}
 
+
+
+    /**
+     * Converts a byte to a sample and normalises its range.
+     * @param readByte      The current byte in the DataLine
+     * @param samples       A list of previous samples
+     * @return              The list of samples with the new byte data
+     */
+    public float[] convertBytesToSamples(int readByte, float[] samples) {
+        for (int i = 0, s = 0; i < readByte; ) {
+            int sample = 0;
+            // Needs to be reversed if we use a big-endian
+            sample |= buffer[i++] & 0xFF;
+            sample |= buffer[i++] << 8;
+            samples[s++] = sample;
+        }
+        return samples;
+    }
+
+    /**
+     * Creates an audio format using Detective's final static
+     * AudioFormat variables.
+     * @return              New AudioFormat
+     */
+    public AudioFormat createAudioFormat() {
+        return new AudioFormat(
+                SAMPLE_RATE,
+                SAMPLE_SIZE,
+                SAMPLE_CHANNELS,
+                true,
+                false
+        );
+    }
+
+    /**
+     * Creates a new DataLine
+     * @param bufferSize    Buffer size
+     * @param af            Audio Format
+     * @return              A new DataLine
+     */
+    public TargetDataLine createDataLine(int bufferSize, AudioFormat af) {
+        try {
+            dataLine = AudioSystem.getTargetDataLine(af);
+            dataLine.open(af, bufferSize);
+            return dataLine;
+        } catch (LineUnavailableException e) {
+            System.out.println("Couldn't open Target Data Line");
+            e.printStackTrace();
+            return null;
+        }
+    }
+}

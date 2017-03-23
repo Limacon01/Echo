@@ -91,7 +91,7 @@ public class GUI extends JFrame {
     void setOff(){
         power.setEnabled(true);
         setStatus("OFF");
-        sound = new Sounds("OFF", this);
+        sound = new Sounds("OFF");
         sound.run();
     }
 
@@ -100,7 +100,7 @@ public class GUI extends JFrame {
         setStatus("LISTEN");
         if(firstTime) {
             //Runs threaded sound
-            sound = new Sounds("ON", this);
+            sound = new Sounds("ON");
             sound.run();
             int secondstoWait = 1;
 

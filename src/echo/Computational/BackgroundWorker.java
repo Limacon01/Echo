@@ -96,12 +96,10 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
         checkForInterrupt();
         Thread t2 = new Thread(new Sounds(outputFile));
         t2.start();
-
         t2.join();
 
-        Thread.sleep((long)length);
+        Thread.sleep((int)length*1000);
         checkForInterrupt();
-        System.out.println("Should be back in listen mode now : " + length);
         publish("FinishedAnswering");
         return null;
     }
