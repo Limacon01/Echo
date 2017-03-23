@@ -1,4 +1,4 @@
-package echo.Tests;
+package echo.Tests.ComputationalTests;
 
 import echo.Computational.Detective;
 import echo.Echo;

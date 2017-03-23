@@ -111,7 +111,6 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
     public void checkForInterrupt() throws InterruptedException {
         if (this.isCancelled()) {
             System.out.println("BG worker stopped");
-
             throw new InterruptedException();
         }
     }
@@ -156,6 +155,8 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
      */
     public static String parseJsonFromMicrosoft(String json){
         String succStr = "\"status\":\"success\"";
+
+        System.out.println(json);
         int status = json.indexOf(succStr);
 
         //If we get a success
