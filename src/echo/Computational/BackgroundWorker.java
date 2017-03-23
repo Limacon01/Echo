@@ -9,37 +9,51 @@ import java.io.File;
 import java.util.List;
 
 /**
- * Created by Mark on 22/03/2017.
+ * @version 2.0
+ * This handles the background processing for the echo.
+ * It runs in a background thread so that it does not lock up the GUI.
+ * Handles:
+ * Detecting sound
+ * Recording sound
+ * Processing speech to text
+ * Processing the resultant JSON
+ * Outputting the speech to a file
+ * Playing the file
  */
 
-//First: int when finished working...
-//Second: status of work
 public class BackgroundWorker extends SwingWorker<Integer, String> {
     private static final String  ERROR_SEND = "I'm sorry, I could not process the voice command";
-    private static final String  ERROR_RETRY= "I'm sorry, I could not understand that - please repeat";
     private static final String  FILENAME   = "query.wav";
     private static final String  INPUT      = "./query.wav";
     private static final String  KEY1       = "1ac04cd4347b49a2b89052edf1a45ef0";
-    private static final float   CONFIDENCE_THREASHOLD =  0.4f;
+    private static final float CONFIDENCE_THRESHOLD =  0.4f;
 
     private GUI       updatedGUI;
     private Detective sherlock;
     private TextToSpeech t2s;
     private WolframQuery wq = new WolframQuery();
 
+    /**
+     * @param gui           The GUI attached to the background
+     *                      worker
+     */
     public BackgroundWorker(GUI gui){
         this.updatedGUI = gui;
-
+        sherlock = new Detective();
         t2s = new TextToSpeech();
         wq = new WolframQuery();
-
         System.out.println("backgroundworker created");
     }
 
+    /**
+     * This method handles all the computation work that is done in
+     * the background of the echo.
+     *
+     * @throws Exception    Throws InterruptedException if gui calls
+     *                      BackgroundWorker.Cancel()
+     */
     @Override
     protected Integer doInBackground() throws Exception {
-        //Create detective
-        sherlock = new Detective();
 
         //Wait for detective to detect sound
         Thread t1 = new Thread(sherlock, "t1");
@@ -85,12 +99,18 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
 
         t2.join();
 
+        Thread.sleep((long)length);
         checkForInterrupt();
+        System.out.println("Should be back in listen mode now : " + length);
         publish("FinishedAnswering");
         return null;
     }
 
-    void checkForInterrupt() throws InterruptedException {
+    /**
+     * @throws InterruptedException This method throws an exception
+     *                              if BackgroundWorker.cancel() is called
+     */
+    public void checkForInterrupt() throws InterruptedException {
         if (this.isCancelled()) {
             System.out.println("BG worker stopped");
 
@@ -98,6 +118,12 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
         }
     }
 
+    /**
+     * A String list containing strings from
+     * publish("STRING") in doInBackground();
+     * @param chunks        The String list
+     *
+     */
     @Override
     protected void process(final List<String> chunks){
         //Updates the GUI
@@ -110,6 +136,11 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
         }
     }
 
+    /**
+     * Converts speech file to a JSON formatted string and then
+     * extracts the plaintext question
+     * @return              A plaintext question
+     */
     private String processSpeechToText(){
         final String token  = SpeechToText.renewAccessToken( KEY1 );
         final byte[] speech = SpeechToText.readData( INPUT );
@@ -120,9 +151,10 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
     /**
      * This function takes a recorded question string in json format
      * and returns the processed result string as long as Microsoft's
-     * cognitive service's confidence threshold is above a defined value
-     * @param json  input string
-     * @return
+     * cognitive service's confidence threshold is above a defined
+     * value
+     * @param json          JSON formatted String
+     * @return              A Plaintext string
      */
     public static String parseJsonFromMicrosoft(String json){
         String succStr = "\"status\":\"success\"";
@@ -134,7 +166,7 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
             String confidenceString = "\"confidence\":\"";
             int confidenceThreshold = json.indexOf(confidenceString) + confidenceString.length();
             float foundThreshold = Float.parseFloat(json.substring(confidenceThreshold, confidenceThreshold+5));
-            if(foundThreshold > CONFIDENCE_THREASHOLD){
+            if(foundThreshold > CONFIDENCE_THRESHOLD){
                 //We're sure this the question string
                 String startOfQuestion = "\"name\":\"";
                 String endOfQuestion = "\",\"lexical\":";

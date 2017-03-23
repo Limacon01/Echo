@@ -6,8 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="785ffe9f-61f4-453f-a5ce-a744e89cbf3d" name="Default" comment="">
+    <list default="true" id="785ffe9f-61f4-453f-a5ce-a744e89cbf3d" name="Default" comment="added jdoc">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/query.wav" afterPath="$PROJECT_DIR$/query.wav" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/echo/Computational/BackgroundWorker.java" afterPath="$PROJECT_DIR$/src/echo/Computational/BackgroundWorker.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/echo/Computational/WolframQuery.java" afterPath="$PROJECT_DIR$/src/echo/Computational/WolframQuery.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/echo/GUI.java" afterPath="$PROJECT_DIR$/src/echo/GUI.java" />
     </list>
     <ignored path="EchoIntegrated.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,6 +26,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/SWETeam$EchoApp__1_.coverage" NAME="EchoApp (1) Coverage Results" MODIFIED="1490225733243" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>echo.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Echo$EchoApp__1_.coverage" NAME="EchoApp (1) Coverage Results" MODIFIED="1488976230105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>echo.*</FILTER>
     </SUITE>
@@ -43,7 +50,7 @@
           <file leaf-file-name="Echo.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
+                <state relative-caret-position="150">
                   <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
                   <folding>
                     <element signature="e#113#114#0" expanded="true" />
@@ -53,16 +60,25 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="WolframQuery.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/echo/Computational/WolframQuery.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="139">
+                  <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="138">
-                  <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+                <state relative-caret-position="139">
+                  <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
                   <folding>
-                    <element signature="docComment;class#GUI#0" expanded="false" />
-                    <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
                     <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
                     <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+                    <element signature="method#setListen#0;class#GUI#0" expanded="false" />
                     <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
                     <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
                     <element signature="class#PowerButton#0;class#GUI#0" expanded="false" />
@@ -78,17 +94,14 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="BackgroundWorker.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/echo/Computational/BackgroundWorker.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="147">
-                  <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
+                <state relative-caret-position="139">
+                  <caret line="158" column="4" selection-start-line="158" selection-start-column="4" selection-end-line="158" selection-end-column="4" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="method#processSpeechToText#0;class#BackgroundWorker#0" expanded="false" />
-                    <element signature="docComment;method#parseJsonFromMicrosoft#0;class#BackgroundWorker#0" expanded="false" />
-                    <element signature="method#parseJsonFromMicrosoft#0;class#BackgroundWorker#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
@@ -137,7 +150,6 @@
         <option value="$PROJECT_DIR$/src/echo/Computational/SpeechToText.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/startDetectionListener.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/StartDetectionListener.java" />
-        <option value="$PROJECT_DIR$/src/echo/Computational/WolframQuery.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/StartListeningListener.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/SoundDetectedListener.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/TextToSpeech.java" />
@@ -149,8 +161,9 @@
         <option value="$PROJECT_DIR$/src/echo/Sounds.java" />
         <option value="$PROJECT_DIR$/src/echo/Echo.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/Detective.java" />
-        <option value="$PROJECT_DIR$/src/echo/GUI.java" />
         <option value="$PROJECT_DIR$/src/echo/Computational/BackgroundWorker.java" />
+        <option value="$PROJECT_DIR$/src/echo/Computational/WolframQuery.java" />
+        <option value="$PROJECT_DIR$/src/echo/GUI.java" />
       </list>
     </option>
   </component>
@@ -192,12 +205,61 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane />
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SWETeam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SWETeam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SWETeam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SWETeam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SWETeam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SWETeam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SWETeam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="echo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -714,7 +776,28 @@
       <option name="project" value="LOCAL" />
       <updated>1490224508244</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="GUI no longer frozen, however button is not interrupting the background thread.">
+      <created>1490224520092</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1490224520092</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Button now interrupts background process">
+      <created>1490255962171</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1490255962171</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Minor change">
+      <created>1490256179149</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1490256179149</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -722,21 +805,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2929746" sideWeight="0.45196003" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2929746" sideWeight="0.45196003" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14349777" sideWeight="0.5511145" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25112107" sideWeight="0.44888547" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25112107" sideWeight="0.44888547" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11509716" sideWeight="0.49116063" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14219831" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14219831" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -751,7 +834,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974634" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
@@ -809,7 +892,10 @@
     <MESSAGE value="Frozen gui, locked, and broken :)" />
     <MESSAGE value="Fixed gui, however need to make it go back in to listen mode" />
     <MESSAGE value="GUI no longer frozen, however button is not interrupting the background thread." />
-    <option name="LAST_COMMIT_MESSAGE" value="GUI no longer frozen, however button is not interrupting the background thread." />
+    <MESSAGE value="Button now interrupts background process" />
+    <MESSAGE value="Minor change" />
+    <MESSAGE value="added jdoc" />
+    <option name="LAST_COMMIT_MESSAGE" value="added jdoc" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -838,10 +924,9 @@
         <state relative-caret-position="195">
           <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
           <folding>
-            <element signature="docComment;class#GUI#0" expanded="false" />
-            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
             <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
             <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
             <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
             <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
             <element signature="class#PowerButton#0;class#GUI#0" expanded="false" />
@@ -876,10 +961,9 @@
         <state relative-caret-position="260">
           <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
           <folding>
-            <element signature="docComment;class#GUI#0" expanded="false" />
-            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
             <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
             <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
             <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
             <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
             <element signature="class#PowerButton#0;class#GUI#0" expanded="false" />
@@ -914,10 +998,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#GUI#0" expanded="false" />
-            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
             <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
             <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
             <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
             <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
             <element signature="class#PowerButton#0;class#GUI#0" expanded="false" />
@@ -952,10 +1035,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#GUI#0" expanded="false" />
-            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
             <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
             <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
             <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
             <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
             <element signature="class#PowerButton#0;class#GUI#0" expanded="false" />
@@ -990,10 +1072,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#GUI#0" expanded="false" />
-            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
             <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
             <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
             <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
             <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
             <element signature="class#PowerButton#0;class#GUI#0" expanded="false" />
@@ -1028,10 +1109,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#GUI#0" expanded="false" />
-            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
             <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
             <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
             <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
             <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
             <element signature="class#PowerButton#0;class#GUI#0" expanded="false" />
@@ -1066,10 +1146,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#GUI#0" expanded="false" />
-            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
             <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
             <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
             <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
             <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
             <element signature="class#PowerButton#0;class#GUI#0" expanded="false" />
@@ -1104,10 +1183,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="docComment;class#GUI#0" expanded="false" />
-            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
             <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
             <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
             <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
             <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
             <element signature="class#PowerButton#0;class#GUI#0" expanded="false" />
@@ -1193,18 +1271,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/echo/Computational/WolframQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="49" column="7" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
-          <folding>
-            <element signature="method#solve#0;class#WolframQuery#0" expanded="false" />
-            <element signature="method#urlEncode#0;class#WolframQuery#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1223,14 +1289,14 @@
         <state relative-caret-position="189">
           <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/Echo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="150">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
             <element signature="e#113#114#0" expanded="true" />
@@ -1243,19 +1309,35 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/echo/Computational/BackgroundWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="158" column="4" selection-start-line="158" selection-start-column="4" selection-end-line="158" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/echo/Computational/WolframQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/echo/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        <state relative-caret-position="139">
+          <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
           <folding>
-            <element signature="docComment;class#GUI#0" expanded="false" />
-            <element signature="method#updateLight#0;class#GUI#0" expanded="false" />
             <element signature="method#updatePowerButton#0;class#GUI#0" expanded="false" />
             <element signature="method#setOff#0;class#GUI#0" expanded="false" />
+            <element signature="method#setListen#0;class#GUI#0" expanded="false" />
             <element signature="method#setStatus#0;class#GUI#0" expanded="false" />
             <element signature="docComment;class#PowerButton#0;class#GUI#0" expanded="false" />
             <element signature="class#PowerButton#0;class#GUI#0" expanded="false" />
@@ -1263,19 +1345,6 @@
             <element signature="docComment;class#Light#0;class#GUI#0" expanded="false" />
             <element signature="class#Light#0;class#GUI#0" expanded="false" />
             <element signature="method#Light#0;class#Light#0;class#GUI#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/echo/Computational/BackgroundWorker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#processSpeechToText#0;class#BackgroundWorker#0" expanded="false" />
-            <element signature="docComment;method#parseJsonFromMicrosoft#0;class#BackgroundWorker#0" expanded="false" />
-            <element signature="method#parseJsonFromMicrosoft#0;class#BackgroundWorker#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -10,9 +10,6 @@ import java.net.URL;
  * Toggle button for power
  * When power button is turned on, lights will glow Cyan to show listening mode has been entered
  * (not fully functional at the moment)
- * TODO:  add light mode for answer state
- * TODO:  integrate listeners for microphone use for answer mode
- * TODO:  make GIFs for lights
  */
 public class GUI extends JFrame {
     private String status = "OFF";
@@ -45,7 +42,7 @@ public class GUI extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.pack();
     }
 
