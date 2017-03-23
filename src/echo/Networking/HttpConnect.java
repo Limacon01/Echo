@@ -5,20 +5,18 @@ import java.io.DataOutputStream;
 import java.io.DataInputStream;
 import java.net.URL;
 import java.net.HttpURLConnection;
-/*
- * Make an HTTP connection.
 
- */
+
 public class HttpConnect {
-  final static int TIMEOUT  = 10000; /* ms  */
-  final static int BUFFSIZE = 4096; /* 4KB */
+    final static int TIMEOUT  = 10000; /* ms  */
+    final static int BUFFSIZE = 4096; /* 4KB */
 
-  public static byte[] httpConnect
-    ( String      method
-    , String      url
-    , String[][]  headers
-    , byte[]      body
-    ) {
+    public static byte[] httpConnect
+        ( String      method,
+          String      url,
+          String[][]  headers,
+          byte[]      body
+        ) {
 
     try {
       /*
