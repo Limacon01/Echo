@@ -58,6 +58,8 @@ public class RecordSound {
 
 
     /**
+     * Reads an audio input stream and converts it to a byte array
+     * containing speech data
      * @param stm           Inputted AudioInputStream containing
      *                      speech data
      * @return              A ByteArray containing speech data
