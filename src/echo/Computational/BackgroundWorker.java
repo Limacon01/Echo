@@ -42,7 +42,6 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
         sherlock = new Detective();
         t2s = new TextToSpeech();
         wq = new WolframQuery();
-        System.out.println("backgroundworker created");
     }
 
     /**
@@ -80,7 +79,6 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
         if (toSendToWolfram.equals("")) {
             //Create appropriate file
             outputFile = t2s.outputSpeechToFile(ERROR_SEND);
-            System.out.println("attempting to play error message");
         } else {
             //Send to wolfram
             String result = wq.processQuestion(toSendToWolfram);
@@ -110,7 +108,7 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
      */
     public void checkForInterrupt() throws InterruptedException {
         if (this.isCancelled()) {
-            System.out.println("BG worker stopped");
+            System.out.println("Stopping background worker");
             throw new InterruptedException();
         }
     }
@@ -155,8 +153,6 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
      */
     public static String parseJsonFromMicrosoft(String json){
         String succStr = "\"status\":\"success\"";
-
-        System.out.println(json);
         int status = json.indexOf(succStr);
 
         //If we get a success
