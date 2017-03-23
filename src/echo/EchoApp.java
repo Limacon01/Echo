@@ -1,7 +1,7 @@
 package echo;
 
 /**
- * Created by Mark on 22/02/2017.
+ * @version 2.0
  */
 public class EchoApp{
     public static void main(String[] argc){
