@@ -6,10 +6,9 @@ import javax.swing.*;
 import java.net.URL;
 
 /**
- * Initiates GUI for an Echo in Off mode
- * Toggle button for power
- * When power button is turned on, lights will glow Cyan to show listening mode has been entered
- * (not fully functional at the moment)
+ * @version 3.0
+ *
+ * Spawns and holds control methods for all things GUI
  */
 public class GUI extends JFrame {
     // Public for testing purposes:
@@ -23,6 +22,9 @@ public class GUI extends JFrame {
     private Sounds sound;
     private BackgroundWorker backgroundWorker;
 
+    /**
+     * Spawn JButtons and call method to spawn and configure JFrame
+     */
     public GUI() {
         power = new PowerButton();
         addPowerListener();
@@ -30,6 +32,9 @@ public class GUI extends JFrame {
         initGUI();
     }
 
+    /**
+     * Spawn and configure JFrame
+     */
     private void initGUI(){
         setTitle("Echo");
         URL background = this.getClass().getResource("/echo/Resources/Images/background.png");
@@ -48,11 +53,9 @@ public class GUI extends JFrame {
         this.pack();
     }
 
-    /*
-       *   Illuminate transitions from:
-       *       OFF -> Listening mode
-       *       Listening mode -> OFF
-   */
+    /**
+     * Action listener for power button
+     */
     private void addPowerListener(){
         power.addActionListener(ev -> {
             switch (status) {
@@ -78,18 +81,29 @@ public class GUI extends JFrame {
         });
     }
 
+    /**
+     * Change light to match current mode of Echo
+     * @param status        Status of Echo: OFF, LISTEN or ANSWER
+     */
     void updateLight(String status){
         URL lightSTATUS = this.getClass().getResource("/echo/Resources/Images/light" + status + ".png");
         light.setIcon(new ImageIcon(lightSTATUS));
         light.revalidate();
     }
 
+    /**
+     * Change power button lighting to match current mode of Echo
+     * @param status        Status of Echo: OFF, LISTEN or ANSWER
+     */
     void updatePowerButton(String status){
         URL powerONLoc = this.getClass().getResource("/echo/Resources/Images/power" + status + ".png");
         power.setIcon(new ImageIcon(powerONLoc));
         power.revalidate();
     }
 
+    /**
+     * Updates GUI to OFF mode and runs according sounds
+     */
     public void setOff(){
         power.setEnabled(true);
         setStatus("OFF");
@@ -97,6 +111,9 @@ public class GUI extends JFrame {
         sound.run();
     }
 
+    /**
+     * Updates GUI to Listen mode and runs according sounds
+     */
     public void setListen(){
         //This updates the gui...
         setStatus("LISTEN");
@@ -119,10 +136,17 @@ public class GUI extends JFrame {
         backgroundWorker.execute();
     }
 
+    /**
+     * Updates GUI to Answer mode
+     */
     public void setAnswer(){
         setStatus("ANSWER");
     }
 
+    /**
+     * Updates lights and power button to argument status
+     * @param status        Status of Echo: OFF, LISTEN or ANSWER
+     */
     public void setStatus(String status){
         this.status = status;
 
@@ -138,13 +162,16 @@ public class GUI extends JFrame {
         System.out.println("Status:" + status);
     }
 
+    /**
+     * Only run Listen sound on first run
+     */
     public void setFirstTime(){
         this.firstTime = true;
     }
 
     /**
-     * Two-state button with a different icon for each state
-     * State change triggered by a mouse click upon button
+     * JButton for power button
+     * See method updatePowerButton to update icon
      */
     private class PowerButton extends JButton {
         PowerButton() {
@@ -157,7 +184,8 @@ public class GUI extends JFrame {
     }
 
     /**
-     * Single state button to act solely as a graphic
+     * JButton to act as a graphic for light
+     * See method updateLight to update icon
      */
     private class Light extends JButton {
         Light() {
