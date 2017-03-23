@@ -14,8 +14,12 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 /**
- * Created by James on 22/03/2017.
+ * @version 2.0
+ *
+ * Testing that detective functions as expected
+ * when creating the audio format and dataline.
  */
+
 public class DetectiveTest {
     /**
      * Creates a new Audio Format using Detective's final static

@@ -9,6 +9,9 @@ import static org.junit.Assert.*;
 /**
  * @version 2.0
  *
+ * This class tests the backgroundWorker functions as expected
+ * -Stopping when it should
+ * -Correctly parses JSON
  *
  */
 public class BackgroundWorkerTest {
