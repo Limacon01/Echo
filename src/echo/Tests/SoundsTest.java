@@ -55,12 +55,9 @@ public class SoundsTest {
         assertNotNull(statusOn.as);
         assertEquals(statusOn.soundRes, null);
 
-        File testFile = new File("src/echo/Tests/Test.wav");
-        Sounds testSounds = new Sounds(testFile);
+        Sounds testSounds = new Sounds("TEST");
         assertEquals(testSounds.soundRes, null);
         testSounds.assignAudioInputStream();
         assertNotNull(testSounds.as);
-
     }
-
 }

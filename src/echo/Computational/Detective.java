@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Detective implements Runnable {
     // Variables are public for testing purposes:
-    public static final float  SAMPLE_RATE = 44100f;    /* MHz  */
+    public static final float  SAMPLE_RATE = 32000f;    /* MHz  */
     public static final int    SAMPLE_SIZE = 16;        /* bits */
     public static final int    SAMPLE_CHANNELS = 1;     /* mono */
     public static final float  SAMPLE_THRESHOLD = 30000f;

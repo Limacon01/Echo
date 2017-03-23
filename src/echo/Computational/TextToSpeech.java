@@ -15,7 +15,7 @@ import java.io.FileOutputStream;
 public class TextToSpeech {
     final static String LANG   = "en-US";
     final static String GENDER = "Female";
-    final static String OUTPUT = "src/echo/speechOutput.wav";
+    final static String OUTPUT = "./speechOutput.wav";
     final static String FORMAT = "riff-16khz-16bit-mono-pcm";
 
     /*final static String KEY1   = "b750f20fdc0c4ac8aaf59073d98c1a05";*/

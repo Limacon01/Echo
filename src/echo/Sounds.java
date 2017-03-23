@@ -16,11 +16,13 @@ public class Sounds implements Runnable {
     public URL     soundRes;
     public File    desiredFile;
     public AudioInputStream as;
+    Clip clip;
 
     /**
      * @param file  The input file that will be run in the .run() method
      */
     public Sounds(File file){
+        clip = null;
         desiredFile = file;
     }
 
@@ -28,12 +30,16 @@ public class Sounds implements Runnable {
      * @param status    the status of the Echo which determines which sound file is to be used
      */
     public Sounds(String status){
+        clip = null;
         switch (status) {
             case "ON":
                 soundRes = this.getClass().getResource("/echo/Resources/Sounds/onSound.wav");
                 break;
             case "OFF":
                 soundRes = this.getClass().getResource("/echo/Resources/Sounds/offSound.wav");
+                break;
+            case "TEST":
+                soundRes = this.getClass().getResource("/echo/Resources/Tests/Text.wav");
                 break;
             default:
                 soundRes = this.getClass().getResource("/echo/Resources/Sounds/errorMessage.wav");
@@ -64,12 +70,15 @@ public class Sounds implements Runnable {
     public void assignAudioInputStream() throws IOException, UnsupportedAudioFileException {
         if(soundRes != null) {
             as = AudioSystem.getAudioInputStream(soundRes);
-            soundRes = null;
-        }else if(desiredFile != null){
+        }
+        if(desiredFile != null){
             as = AudioSystem.getAudioInputStream(desiredFile);
-        }else{
+        } else{
             System.out.println("Could not find input file");
         }
+    }
+
+    public static void closeDataLine(){
     }
 
 
@@ -80,8 +89,9 @@ public class Sounds implements Runnable {
     public void run() {
         try {
             System.out.println("Sound running");
-            Clip clip = AudioSystem.getClip();
             assignAudioInputStream();
+            DataLine.Info info = new DataLine.Info(Clip.class, as.getFormat());
+            clip = (Clip)AudioSystem.getLine(info);
             clip.open(as);
             clip.start();
         } catch(Exception e){
