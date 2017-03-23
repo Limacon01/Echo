@@ -74,11 +74,12 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
             //Create appropriate file
             outputFile = t2s.outputSpeechToFile(result);
         }
+
         //Play text-to-speech
         Sounds s = new Sounds(outputFile);
         double length = s.getLengthOfFile(outputFile);
 
-        Thread.sleep(1L); checkForInterrupt();
+        checkForInterrupt();
         Thread t2 = new Thread(new Sounds(outputFile));
         t2.start();
 
