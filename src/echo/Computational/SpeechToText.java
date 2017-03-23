@@ -6,14 +6,17 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.DataInputStream;
 import java.util.UUID;
-/*
-
+/**
+ * version 1.0
+ * Records speech and processes it to a string
  */
 public class SpeechToText {
   final static String LANG  = "en-US";
 
-  /*
-   * Renew an access token --- they expire after 10 minutes.
+  /**
+   * Renews access token --- they expire after 10 minutes.
+   * @param key1            Developer key need for an access token
+   *                        to use Microsoft Cognitive Services
    */
   public static String renewAccessToken( String key1 ) {
     final String method = "POST";
@@ -28,9 +31,16 @@ public class SpeechToText {
     return new String( response );
   }
 
-  /*
-   * Recognize speech.
-   */
+
+    /**
+     * Takes a byte array for the speech and returns a string
+     * for the text
+     * @version 1.0
+     * @author David Wakeling
+     * @param token         needed to use speech processing
+     * @param body          byte array of speech
+     * @return              JSON text
+     */
   public static String recognizeSpeech( String token, byte[] body ) {
     final String method = "POST";
     final String url
@@ -53,8 +63,13 @@ public class SpeechToText {
     return new String( response );
   }
 
-  /*
-   * Read data from file.
+  /**
+   * Takes an input file and reads into a byte array to be
+   * processed in recognizeSpeech()
+   * version 1.0
+   * @author David Wakeling
+   * @param name            input file
+   * @return                buffer
    */
   public static byte[] readData( String name ) {
     try {
