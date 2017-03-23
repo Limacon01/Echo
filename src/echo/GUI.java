@@ -22,7 +22,7 @@ public class GUI extends JFrame {
     private final Light         light;
 
     private Sounds sound;
-    BackgroundWorker backgroundWorker;
+    private BackgroundWorker backgroundWorker;
 
     public GUI() {
         power = new PowerButton();
@@ -56,18 +56,17 @@ public class GUI extends JFrame {
    */
     private void addPowerListener(){
         power.addActionListener(ev -> {
-            //we need to find a way to turn this off
             switch (status) {
                 /* Turning echo from off to on */
                 case "OFF":
                     setFirstTime();
-
                     //Updates the gui... plays the sounds...
                     setListen();
                     break;
                 /* Turning echo from on to off */
                 case "LISTEN":
-                    backgroundWorker.cancel();
+                    System.out.println("Attempted to interupt background worker");
+                    backgroundWorker.cancel(true);
 
                     setOff();
                     break;
@@ -102,23 +101,23 @@ public class GUI extends JFrame {
     public void setListen(){
         //This updates the gui...
         setStatus("LISTEN");
-
         if(firstTime) {
             //Runs threaded sound
             sound = new Sounds("ON", this);
             sound.run();
             int secondstoWait = 1;
-            try {
-                Thread.sleep(secondstoWait * 1000);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+
+            try { Thread.sleep(secondstoWait * 1000);}
+            catch (Exception e) {e.printStackTrace();}
+
             firstTime = false;
         }
 
-        backgroundWorker = new BackgroundWorker(this);
+        if(backgroundWorker != null) {
+            backgroundWorker.cancel(true);
+        }
+        backgroundWorker = new BackgroundWorker(GUI.this);
         backgroundWorker.execute();
-        System.out.println("CREATED A BACKGROUND WORKER");
     }
 
     public void setAnswer(){
@@ -138,10 +137,6 @@ public class GUI extends JFrame {
             updatePowerButton("OFF");
         }
         System.out.println("Status:" + status);
-    }
-
-    public String checkStatus(){
-        return status;
     }
 
     public void setFirstTime(){

@@ -1,6 +1,5 @@
 package echo.Computational;
 
-import echo.Echo;
 import echo.GUI;
 import echo.Sounds;
 
@@ -8,8 +7,6 @@ import javax.sound.sampled.AudioInputStream;
 import javax.swing.*;
 import java.io.File;
 import java.util.List;
-
-import static java.lang.Thread.sleep;
 
 /**
  * Created by Mark on 22/03/2017.
@@ -29,7 +26,6 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
     private Detective sherlock;
     private TextToSpeech t2s;
     private WolframQuery wq = new WolframQuery();
-    private boolean runOnlyOnce = true;
 
     public BackgroundWorker(GUI gui){
         this.updatedGUI = gui;
@@ -42,84 +38,75 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
 
     @Override
     protected Integer doInBackground() throws Exception {
-        if(runOnlyOnce) {
-            //Create detective
-            sherlock = new Detective();
+        //Create detective
+        sherlock = new Detective();
 
-            //Wait for detective to detect sound
-            Thread t1 = new Thread(sherlock, "t1");
-            t1.start();
+        //Wait for detective to detect sound
+        Thread t1 = new Thread(sherlock, "t1");
+        t1.start();
 
-            //Detect when detective is back
-            t1.join();
-            publish("Sound detected");
+        //Detect when detective is back
+        t1.join();
 
-            //Record the sound
-            AudioInputStream ais = RecordSound.setupStream();
-            RecordSound.recordSound(FILENAME, RecordSound.readStream(ais));
-            RecordSound.closeDataLine();
+        checkForInterrupt();
+        publish("Sound detected");
 
-            //Update the GUI to answer mode
-            publish("AnswerMode");
+        //Record the sound
+        AudioInputStream ais = RecordSound.setupStream();
+        RecordSound.recordSound(FILENAME, RecordSound.readStream(ais));
+        RecordSound.closeDataLine();
 
-            //ProcessSpeechToText
-            String toSendToWolfram = processSpeechToText();
-            File outputFile;
-            if (toSendToWolfram.equals("")) {
-                //Create appropriate file
-                outputFile = t2s.outputSpeechToFile(ERROR_SEND);
-                System.out.println("attempting to play error message");
-            } else {
-                //Send to wolfram
-                String result = wq.processQuestion(toSendToWolfram);
+        //Update the GUI to answer mode
+        checkForInterrupt();
+        publish("AnswerMode");
 
-                //Create appropriate file
-                outputFile = t2s.outputSpeechToFile(result);
-            }
-            //Play text-to-speech
-            Sounds s = new Sounds(outputFile);
-            double length = s.getLengthOfFile(outputFile);
+        //ProcessSpeechToText
+        String toSendToWolfram = processSpeechToText();
+        File outputFile;
+        if (toSendToWolfram.equals("")) {
+            //Create appropriate file
+            outputFile = t2s.outputSpeechToFile(ERROR_SEND);
+            System.out.println("attempting to play error message");
+        } else {
+            //Send to wolfram
+            String result = wq.processQuestion(toSendToWolfram);
 
-            Thread t2 = new Thread(new Sounds(outputFile));
-            t2.start();
-
-            t2.join();
-            publish("FinishedAnswering");
-            runOnlyOnce = false;
-        }else{
-            cancel();
+            //Create appropriate file
+            outputFile = t2s.outputSpeechToFile(result);
         }
+        //Play text-to-speech
+        Sounds s = new Sounds(outputFile);
+        double length = s.getLengthOfFile(outputFile);
+
+        Thread.sleep(1L); checkForInterrupt();
+        Thread t2 = new Thread(new Sounds(outputFile));
+        t2.start();
+
+        t2.join();
+
+        checkForInterrupt();
+        publish("FinishedAnswering");
         return null;
     }
 
-     static void failIfInterrupted() throws InterruptedException {
-        if (Thread.currentThread().isInterrupted()) {
-            System.out.println("attempting to shutdown backgroundworker");
-            throw new InterruptedException("Interrupted.... shutting down");
+    void checkForInterrupt() throws InterruptedException {
+        if (this.isCancelled()) {
+            System.out.println("BG worker stopped");
+
+            throw new InterruptedException();
         }
     }
 
     @Override
     protected void process(final List<String> chunks){
-        //Update the gui?
+        //Updates the GUI
         for(final String string : chunks){
             if(string.equals("AnswerMode")){
                 updatedGUI.setAnswer();
             }else if(string.equals("FinishedAnswering")){
                 updatedGUI.setListen();
-                cancel();
             }
         }
-    }
-
-    public void cancel(){
-        this.cancel(true);
-        if (this.isCancelled()) {
-            System.out.println("WE'VE CANCELLED!");
-        } else {
-            System.out.println("WUT, WE HAVEN'T CANCELLED");
-        }
-        //System.out.println("Quit listening mode - byebye!");
     }
 
     private String processSpeechToText(){
