@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * @version 2.0
+ *
  * Detects when sounds surpasses a certain threshold and alerts listeners
  */
 public class Detective implements Runnable {

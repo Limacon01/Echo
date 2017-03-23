@@ -12,10 +12,12 @@ import java.net.URL;
  * (not fully functional at the moment)
  */
 public class GUI extends JFrame {
-    private String status = "OFF";
-    private boolean firstTime = true;
+    // Public for testing purposes:
+    // (these fields are not manipulated directly by any other classes)
+    public String status = "OFF";
+    public boolean firstTime = true;
 
-    private final PowerButton   power;
+    public final PowerButton   power;
     private final Light         light;
 
     private Sounds sound;
@@ -88,7 +90,7 @@ public class GUI extends JFrame {
         power.revalidate();
     }
 
-    void setOff(){
+    public void setOff(){
         power.setEnabled(true);
         setStatus("OFF");
         sound = new Sounds("OFF");
