@@ -1,15 +1,16 @@
 package echo.Computational;
 
 import echo.Networking.HttpConnect;
-import echo.Sounds;
 
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.DataOutputStream;
-import java.net.URL;
 
-/*
- * Text to speech conversion using Microsoft Cognitive Services.
+/**
+ * @version 1.0
+ * @author David Wakeling
+ *
+ * Text to speech using Microsoft Cognition Services.
  */
 public class TextToSpeech {
     final static String LANG   = "en-US";
@@ -26,8 +27,10 @@ public class TextToSpeech {
         return writeData( speech, OUTPUT );
     }
 
-    /*
+    /**
      * Renew an access token --- they expire after 10 minutes.
+     * @param key1          Developer key
+     * @return              Renewed access token
      */
     public static String renewAccessToken( String key1 ) {
         final String method = "POST";
@@ -42,8 +45,14 @@ public class TextToSpeech {
         return new String( response );
     }
 
-    /*
+    /**
      * Synthesize speech.
+     * @param token         Authorised access token
+     * @param text          Text to synthesize into speech
+     * @param lang          Locale to synthesize speech in
+     * @param gender        Preferred gender of voice
+     * @param format        Audio output format
+     * @return              Byte array of speech
      */
     public static byte[] synthesizeSpeech( String token, String text
             , String lang,  String gender
@@ -68,8 +77,11 @@ public class TextToSpeech {
         return response;
     }
 
-    /*
+    /**
      * Write data to file.
+     * @param buffer        Byte array of speech
+     * @param name          Desired name of output file
+     * @return              Output audio file
      */
     public static File writeData( byte[] buffer, String name ) {
         try {
