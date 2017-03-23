@@ -34,6 +34,9 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
     private WolframQuery wq = new WolframQuery();
 
     /**
+     * Get access to the GUI, initialise a Detective, text-to-speech
+     * and wolfram query instance.
+     *
      * @param gui           The GUI attached to the background
      *                      worker
      */
@@ -116,8 +119,7 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
     /**
      * A String list containing strings from
      * publish("STRING") in doInBackground();
-     * @param chunks        The String list
-     *
+     * @param chunks        String list of strings that get published
      */
     @Override
     protected void process(final List<String> chunks){

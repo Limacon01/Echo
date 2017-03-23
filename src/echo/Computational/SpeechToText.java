@@ -6,8 +6,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.DataInputStream;
 import java.util.UUID;
+
 /**
- * version 1.0
+ * @version 1.0
+ * @author David Wakeling
+ *
  * Records speech and processes it to a string
  */
 public class SpeechToText {
@@ -35,8 +38,6 @@ public class SpeechToText {
     /**
      * Takes a byte array for the speech and returns a string
      * for the text
-     * @version 1.0
-     * @author David Wakeling
      * @param token         needed to use speech processing
      * @param body          byte array of speech
      * @return              JSON text
@@ -66,8 +67,6 @@ public class SpeechToText {
   /**
    * Takes an input file and reads into a byte array to be
    * processed in recognizeSpeech()
-   * version 1.0
-   * @author David Wakeling
    * @param name            input file
    * @return                buffer
    */

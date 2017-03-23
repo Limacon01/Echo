@@ -73,14 +73,9 @@ public class Sounds implements Runnable {
         }
         if(desiredFile != null){
             as = AudioSystem.getAudioInputStream(desiredFile);
-        } else{
-            System.out.println("Could not find input file");
         }
-    }
 
-    public static void closeDataLine(){
     }
-
 
     /**
      * This run method will play the selected wav file
