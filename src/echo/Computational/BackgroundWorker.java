@@ -96,12 +96,10 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
         checkForInterrupt();
         Thread t2 = new Thread(new Sounds(outputFile));
         t2.start();
-
         t2.join();
 
-        Thread.sleep((long)length);
+        Thread.sleep((int)length*1000);
         checkForInterrupt();
-        System.out.println("Should be back in listen mode now : " + length);
         publish("FinishedAnswering");
         return null;
     }
@@ -113,7 +111,6 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
     public void checkForInterrupt() throws InterruptedException {
         if (this.isCancelled()) {
             System.out.println("BG worker stopped");
-
             throw new InterruptedException();
         }
     }
@@ -158,6 +155,8 @@ public class BackgroundWorker extends SwingWorker<Integer, String> {
      */
     public static String parseJsonFromMicrosoft(String json){
         String succStr = "\"status\":\"success\"";
+
+        System.out.println(json);
         int status = json.indexOf(succStr);
 
         //If we get a success

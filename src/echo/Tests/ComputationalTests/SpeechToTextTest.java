@@ -15,7 +15,7 @@ public class SpeechToTextTest {
     public void renewAccessToken() throws Exception {
         final String  KEY1       = "1ac04cd4347b49a2b89052edf1a45ef0";
         String token = SpeechToText.renewAccessToken(KEY1);
-        System.out.println(token);
+        assertTrue(!token.equals(null));
     }
 
     @Test
@@ -29,11 +29,9 @@ public class SpeechToTextTest {
         byte[] speech = SpeechToText.readData( testFile.getPath() );
         final String jsonText   = SpeechToText.recognizeSpeech( token, speech );
 
-        //Tests are a work in progress
-        System.out.println(jsonText);
-        System.out.println(jsonText.indexOf(" Test 123. "));
-        //assertEquals(jsonText.substring())
-        //assertEquals(jsonText, ExampleOutput);
+        assertEquals("The example wav should succeed", jsonText.indexOf("\"status\":\"success\"")>0, true);
+        assertEquals("The example wav should not fail", jsonText.indexOf("\"status\":\"failure\"")>0, false);
+        assertEquals("The wav should find the speech 'Test 123'", jsonText.indexOf("\"name\":\"Test 123.\"")>0, true);
     }
 
     @Test

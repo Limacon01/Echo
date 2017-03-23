@@ -7,6 +7,14 @@ import java.io.File;
 import java.io.InputStream;
 
 
+/**
+ * @version 1.1
+ * @author David Wakeling
+ *
+ * Contains methods for setting up a string and recording sound for
+ * a limited time period, before saving the speech to a .wav file
+ * a file.
+ */
 public class RecordSound {
     private static final int     TIMER           = 5;      /* secs */
     private static final int     SAMPLE_RATE     = 32000;  /* MHz  */
@@ -14,8 +22,11 @@ public class RecordSound {
     private static final int     SAMPLE_CHANNELS = 1;      /* mono */
     static TargetDataLine line;
 
-    /*
-     * Set up stream.
+
+    /**
+     * Creates a new AudioFormat, and uses it to create a new
+     * DataLine. This DataLine is then started.
+     * @return              An AudioInputStream
      */
     public static AudioInputStream setupStream() {
         try {
@@ -41,15 +52,15 @@ public class RecordSound {
         }
     }
 
-    /**
-     *
-     */
     public static void closeDataLine(){
         line.close();
     }
 
-    /*
-     * Read stream.
+
+    /**
+     * @param stm           Inputted AudioInputStream containing
+     *                      speech data
+     * @return              A ByteArray containing speech data
      */
     public static ByteArrayOutputStream readStream( AudioInputStream stm ) {
         try {
@@ -78,8 +89,13 @@ public class RecordSound {
         }
     }
 
-    /*
-     * Record sound.
+
+    /**
+     * Creates a .wav file containing speech recorded from the
+     * ByteArrayOutputStream
+     * @param name          Outputted file
+     * @param bos           Inputted speech data in a Byte Array
+     *                      Output Stream
      */
     public static void recordSound( String name, ByteArrayOutputStream bos ) {
         try {
