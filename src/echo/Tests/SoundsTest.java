@@ -42,7 +42,7 @@ public class SoundsTest {
     }
 
     /**
-     * Tests that AudioInputStream is being assigned a file
+     * Tests that the AudioInputStream is being assigned a file
      *
      * @throws IOException
      * @throws UnsupportedAudioFileException
