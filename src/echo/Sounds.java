@@ -77,10 +77,6 @@ public class Sounds implements Runnable {
 
     }
 
-    public static void closeDataLine(){
-    }
-
-
     /**
      * This run method will play the selected wav file
      */
