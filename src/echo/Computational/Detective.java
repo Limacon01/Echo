@@ -14,7 +14,7 @@ public class Detective implements Runnable {
     public static final float  SAMPLE_RATE = 32000f;    /* MHz  */
     public static final int    SAMPLE_SIZE = 16;        /* bits */
     public static final int    SAMPLE_CHANNELS = 1;     /* mono */
-    public static final float  SAMPLE_THRESHOLD = 30000f;
+    public static final float  SAMPLE_THRESHOLD = 20000f;
     TargetDataLine dataLine;
     byte[] buffer;
 
