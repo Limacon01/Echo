@@ -37,13 +37,13 @@ public class WolframQuery {
     /**
      * Encode String to utf-8
      * @param   s       Input testing
-     * @return
+     * @return          URL string encoded
      */
     private static String urlEncode( String s ) {
         try {
           return URLEncoder.encode( s, "utf-8" );
         } catch ( Exception ex ) {
-          System.out.println( ex ); System.exit( 1 ); return null;
+          ex.printStackTrace(); System.exit( 1 ); return null;
         }
     }
 
@@ -89,7 +89,6 @@ public class WolframQuery {
         if (shortResult.contains("\\n")) {
             shortResult = shortResult.substring(0, shortResult.indexOf("\\n"));
         }
-        System.out.println(shortResult);
         return shortResult;
     }
 
@@ -100,7 +99,6 @@ public class WolframQuery {
      */
     public String processQuestion( String question ) {
         String solution = solve(question);
-        System.out.println("\n -- " + solution + " -- \n");
         return processJson(solution);
     }
 }
