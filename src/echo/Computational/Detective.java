@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @version 2.0
  *
- * Detects when sounds surpasses a certain threshold and alerts listeners
+ * Detects when sounds surpasses a certain threshold
  */
 public class Detective implements Runnable {
     // Variables are public for testing purposes:
@@ -18,6 +18,10 @@ public class Detective implements Runnable {
     TargetDataLine dataLine;
     byte[] buffer;
 
+    /**
+     * This thread will run until a sound is detected
+     * above the given the given threshold
+     */
     @Override
     public void run() {
         final int bufferSize = 2048;
@@ -25,7 +29,6 @@ public class Detective implements Runnable {
         dataLine = createDataLine(bufferSize, af);
         buffer = new byte[bufferSize];
         float[] samples = new float[bufferSize / 2];
-
         dataLine.start();
         for (int readByte; (readByte = dataLine.read(buffer, 0, buffer.length)) > -1; ) {
             samples = convertBytesToSamples(readByte, samples);
