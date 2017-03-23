@@ -57,6 +57,7 @@ public class WolframQuery {
      */
     private String processJson(String s) {
         int resultPodIndex = 0;
+        boolean isDefinition = false;
 
         if (!s.substring(20,36).equals("\"success\" : true")) {
             return "Query unsuccessful";
@@ -72,6 +73,9 @@ public class WolframQuery {
         int i;
         for (i=0; i<podStrings.size(); i++) {
             if (s.contains(titleString + podStrings.get(i))) {
+                if (podStrings.get(i).equals("\"Definitions\"")) {
+                    isDefinition = true;
+                }
                 resultPodIndex = s.indexOf(titleString + podStrings.get(i));
                 break;
             }
@@ -86,9 +90,11 @@ public class WolframQuery {
         String longResult = resultString.substring(0, endResultString);
         String shortResult = longResult.replaceAll("noun", "");
         //shortResult = shortResult.split("\\n")[0];
-        if (shortResult.contains("\\n")) {
+        if (shortResult.contains("\\n") && isDefinition) {
             shortResult = shortResult.substring(0, shortResult.indexOf("\\n"));
         }
+        shortResult = shortResult.replace("\\n", "");
+        shortResult = shortResult.replace("\\", "");
         return shortResult;
     }
 
@@ -102,25 +108,3 @@ public class WolframQuery {
         return processJson(solution);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
